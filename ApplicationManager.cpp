@@ -245,22 +245,17 @@ void  ApplicationManager::savefilecommponent(fstream& file) {
 	}
 }
 
-bool ApplicationManager::ValidConnectionPoint(int x, int y, const Component* c1)  {
-	int c = 0;
+Component* ApplicationManager::ValidConnectionPoint(int x, int y)  {
+	
 	for (int i = 0; i < CompCount; i++) {
 		if (CompList[i]->IsInRegion(x, y)) {
-			c1 = CompList[i];
-			c++;
+			return CompList[i];
 		}
+ 
 	}
-	if (c > 0)
-		return true;	
-	else
-		return false;
-	
-	
-}
+ return false;
 
+}
 void ApplicationManager::ToSimulation() {
 		this->IsSimulation = true;
 		// Compute all needed voltages and current

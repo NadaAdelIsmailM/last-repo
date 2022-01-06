@@ -47,7 +47,7 @@ public:
 	void AddConnection(Connection* pConn);
 	void UnselectAll(Component* pComp);//this function is not used, it was used to unselect all object except the passed object(pComp) which leaves it as it is.
 	void UnselectAll(Connection* pConn);
-	bool ValidConnectionPoint(int x, int y,const Component* c1);
+	Component* ValidConnectionPoint(int x, int y);
 	void Load2(ifstream &my_file, string fo_name);
 	Component* GetComponentByCoordinates(int x, int y);
 	Connection* GetConnByCoordinates(int x, int y);
