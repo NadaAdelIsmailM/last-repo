@@ -11,4 +11,5 @@ public:
 	virtual void Draw(UI*);
 	virtual void Load(string label, int value);
 	virtual void savecommponnent(fstream& file);
+	virtual Buzzer* copy();
 };

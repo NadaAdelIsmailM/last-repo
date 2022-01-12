@@ -10,5 +10,6 @@ public:
 	virtual void Draw(UI*);	//Draws the switch
 	virtual void Load(string label, int value);
 	virtual void  Switch::savecommponnent(fstream& file);
+	virtual Switch* copy();
 };
  

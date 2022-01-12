@@ -13,6 +13,7 @@ private:
 
 protected:
 	string m_Label;
+
 	//Each component has two ending terminals (term1, term2)
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
 	//static int ID;
@@ -35,6 +36,8 @@ protected:
 
 
 public:
+
+	//GraphicsInfo* m_pGfxInfo;
 	Component(GraphicsInfo *r_GfxInfo);
 	//void setTerm1Volt(double v);		//sets the voltage at terminal1
 	//void setTerm2Volt(double v);		//sets the voltage at terminal2
@@ -74,7 +77,7 @@ public:
 	virtual void savecommponnent(fstream& file)=0;
 	virtual void Load(string label,int value)=0;
 	TerminalNum WhatTerminal(Connection* Conn); // returns the terminal to which a connection is connected
-
+	virtual Component* copy() = 0;
 	Component();	
 	
 	//Destructor must be virtual

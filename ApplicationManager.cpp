@@ -15,7 +15,8 @@
 #include "Actions/ActionSwitchSim.h"
 #include "Actions/ActionDesign.h"
 #include "Actions/ActionSave.h"
-
+#include "Actions/ActionCopy.h"
+#include "Actions/ActionPaste.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -189,6 +190,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new Actionsave(this);
 			break;
+		case COPY:
+			pAct = new ActionCopy(this);
+			break;
+		case PASTE:
+			pAct = new ActionPaste(this);
+			break;
 
 
 
@@ -309,6 +316,10 @@ void ApplicationManager::savefilrconnection(fstream& file) {
 	for (int i = 0;i < ConnCount;i++) {
 		ConnList[i]->saveconnection(file);
 	}
+}
+
+void ApplicationManager::paste()
+{
 }
 
 void  ApplicationManager::savefilecommponent(fstream& file) {
@@ -463,3 +474,22 @@ void ApplicationManager::Load2(ifstream& my_file, string fo_name) {
 
 
 	
+void ApplicationManager::setcopycomponent(Component* clicked) {
+	copycomp = clicked->copy();
+
+}
+
+
+Component* ApplicationManager::getcopycomponent() {
+	return copycomp->copy();
+}
+
+
+
+
+void ApplicationManager::setx(Component* x) {
+	this->x = x;
+}
+Component* ApplicationManager::getx() {
+	return x;
+}

@@ -1,24 +1,24 @@
-#include "ActionCopy.h"
+#include "ActionPaste.h"
 #include "..\ApplicationManager.h"
 #include "..\Components\Component.h"
 #include "ActionSelect.h"
-#include "ActionSelect.cpp"
 
-ActionCopy::ActionCopy(ApplicationManager* pApp) :Action(pApp)
+
+ActionPaste::ActionPaste(ApplicationManager* pApp) :Action(pApp)
 {
 }
 
-ActionCopy::~ActionCopy(void)
+ActionPaste::~ActionPaste(void)
 {
 }
 
-void ActionCopy::Execute()
+void ActionPaste::Execute()
 {
 	//Get a Pointer to the user Interfaces
 	UI* pUI = pManager->GetUI();
 
 	//Print Action Message
-//	pUI->PrintMsg("Add the label you want ");
+	pUI->PrintMsg("click where you want to add ");
 //	rname = pUI->GetString();
 
 	//Get Center point of the area where the Comp should be drawn
@@ -38,16 +38,20 @@ void ActionCopy::Execute()
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-	Component* pointer = pManager->getx();
-	pManager->setcopycomponent(pointer);
+	pUI->PrintMsg("enter the label ");
+	string label = pUI->GetString();
+	pUI->ClearStatusBar();
+	Component* c = pManager->paste();
+	pManager->AddComponent(c);
+
 	//Resistor* pR = new Resistor(pGInfo, rname);
 	//pManager->AddComponent(pR);
 
 }
 
-void ActionCopy::Undo()
+void ActionPaste::Undo()
 {}
 
-void ActionCopy::Redo()
+void ActionPaste::Redo()
 {}
 

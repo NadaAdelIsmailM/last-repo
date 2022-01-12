@@ -49,7 +49,8 @@ class UI
 		ITM_LOAD,
 		ITM_SIM,
 		ITM_editlabel,
-
+		ITM_COPY,
+		ITM_PASTE,
 		ITM_SAVE,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here

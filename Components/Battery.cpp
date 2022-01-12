@@ -33,3 +33,10 @@ void Battery::Load(string label, int value) {
 
 
 }
+
+Battery* Battery::copy()
+{
+	Battery* PPr = new Battery(m_pGfxInfo, m_Label);
+
+	return PPr;
+}

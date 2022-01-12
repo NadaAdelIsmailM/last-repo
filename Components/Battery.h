@@ -10,4 +10,5 @@ public:
 	virtual void Draw(UI*);	//Draws the resistor
 	virtual void savecommponnent(fstream& file);
 	virtual void Load(string label, int value);
+	virtual Battery* copy();
 };

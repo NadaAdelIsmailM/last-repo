@@ -37,3 +37,10 @@ void  Resistor::savecommponnent(fstream& file) {
 
 	file << "Resistor  \t" << to_string(id) << "\t" << m_Label << "\t" << to_string(m_pGfxInfo->PointsList[0].x) << "\t" << to_string(m_pGfxInfo->PointsList[0].y);
 }
+
+Resistor* Resistor::copy()
+{
+	Resistor* PPr = new Resistor(m_pGfxInfo, m_Label);
+	this->resistance = resistance;
+	return PPr;
+}

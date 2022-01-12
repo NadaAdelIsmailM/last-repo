@@ -32,3 +32,10 @@ void  Buzzer::savecommponnent(fstream& file) {
 
 	file << "Buzzer \t" << to_string(id) << "\t" << m_Label << "\t" << to_string(m_pGfxInfo->PointsList[0].x) << "\t" << to_string(m_pGfxInfo->PointsList[0].y);
 }
+
+Buzzer* Buzzer::copy()
+{
+	Buzzer* PPr = new Buzzer(m_pGfxInfo, m_Label);
+
+	return PPr;
+}

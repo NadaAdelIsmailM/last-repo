@@ -40,7 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -120,9 +120,12 @@
     <ClCompile Include="Actions\ActionAddRes.cpp" />
     <ClCompile Include="Actions\ActionAddSwitch.cpp" />
     <ClCompile Include="Actions\ActionAmmeter.cpp" />
+    <ClCompile Include="Actions\ActionCopy.cpp" />
+    <ClCompile Include="Actions\ActionDeleteComponent.cpp" />
     <ClCompile Include="Actions\ActionDesign.cpp" />
     <ClCompile Include="Actions\actionEditLabel.cpp" />
     <ClCompile Include="Actions\ActionExit.cpp" />
+    <ClCompile Include="Actions\ActionPaste.cpp" />
     <ClCompile Include="Actions\Actionsave.cpp" />
     <ClCompile Include="Actions\ActionSelect.cpp" />
     <ClCompile Include="Actions\ActionSwitchActual.cpp" />
@@ -189,9 +192,12 @@
     <ClInclude Include="Actions\ActionAddRes.h" />
     <ClInclude Include="Actions\ActionAddSwitch.h" />
     <ClInclude Include="Actions\ActionAmmeter.h" />
+    <ClInclude Include="Actions\ActionCopy.h" />
+    <ClInclude Include="Actions\ActionDeleteComponent.h" />
     <ClInclude Include="Actions\ActionDesign.h" />
     <ClInclude Include="Actions\actionEditLabel.h" />
     <ClInclude Include="Actions\ActionExit.h" />
+    <ClInclude Include="Actions\ActionPaste.h" />
     <ClInclude Include="Actions\ActionSave.h" />
     <ClInclude Include="Actions\ActionSelect.h" />
     <ClInclude Include="Actions\ActionSwitchActual.h" />

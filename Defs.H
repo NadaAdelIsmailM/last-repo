@@ -18,7 +18,8 @@ enum ActionType
 	ADD_FUSE,		
 	ADD_CONNECTION,		//Add Wire Connection
 	SWITCH_IMG,
-	
+	COPY,
+	PASTE,
 	ADD_Label,			//Add Label to a Component, a Connection
 	EDIT_Label,			//Edit Label of a Component, a Connection
 

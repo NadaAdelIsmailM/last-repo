@@ -10,4 +10,5 @@ public:
 	virtual void Draw(UI*);	//Draws the resistor
 	virtual void Load(string label, int value);
 	virtual void  fuse::savecommponnent(fstream& file);
+	virtual fuse* copy();
 };

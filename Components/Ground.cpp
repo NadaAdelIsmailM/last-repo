@@ -34,3 +34,10 @@ void Ground::Load(string label, int value) {
 
 
 }
+
+Ground* Ground::copy()
+{
+	Ground* PPr = new Ground(m_pGfxInfo, m_Label);
+
+	return PPr;
+}

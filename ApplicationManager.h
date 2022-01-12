@@ -22,11 +22,13 @@ private:
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
 	Connection* ConnList[MaxCompCount];
 	UI* pUI; //pointer to the UI
-
+	Component* x;
 
 
 public:	
-
+	Component* copycomp;
+	void setx(Component* x);
+	Component* getx();
 	ApplicationManager(); //constructor
 
 	//Reads the required action from the user and returns the corresponding action type
@@ -57,7 +59,11 @@ public:
 	double CalculateCurrent();
 	void CalculateVolt(double current);
 	void savefilrconnection(fstream& file);
+	void paste();
+	void setcopycomponent(Component* clicked);
+	Component* ApplicationManager::getcopycomponent();
 	//destructor
+
 	~ApplicationManager();
 };
 

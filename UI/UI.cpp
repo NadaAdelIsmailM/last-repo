@@ -131,6 +131,8 @@ ActionType UI::GetUserAction() const
 			case ITM_SIM: return SIM_MODE;
 			case ITM_SAVE:	return SAVE;
 			case ITM_EXIT:	return EXIT;
+			case ITM_COPY:	return COPY;
+			case ITM_PASTE:	return PASTE;
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -240,6 +242,8 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_SIM] = "Images\\Menu\\Menu_Simm.jpg";
 	MenuItemImages[ITM_SAVE] = "Images\\Menu\\Menu_save.jpg";
 	MenuItemImages[ITM_editlabel] = "Images\\Menu\\Menu_editlabel.jpg";
+	MenuItemImages[ITM_COPY] = "Images\\Menu\\Menu_Copy.jpg";
+	MenuItemImages[ITM_PASTE] = "Images\\Menu\\Menu_paste.jpg";
 		//TODO: Prepare image for each menu item and add it to the list
 
 	//Draw menu item one image at a time

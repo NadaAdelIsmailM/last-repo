@@ -199,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="Actions\ActionAmmeter.cpp" />
     <ClCompile Include="Actions\ActionVoltmeter.cpp" />
+    <ClCompile Include="Actions\ActionCopy.cpp" />
+    <ClCompile Include="Actions\ActionDeleteComponent.cpp" />
+    <ClCompile Include="Actions\ActionPaste.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -336,6 +339,9 @@
     </ClInclude>
     <ClInclude Include="Actions\ActionAmmeter.h" />
     <ClInclude Include="Actions\ActionVoltmeter.h" />
+    <ClInclude Include="Actions\ActionCopy.h" />
+    <ClInclude Include="Actions\ActionDeleteComponent.h" />
+    <ClInclude Include="Actions\ActionPaste.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMUgraphicsLib\Manual.txt">

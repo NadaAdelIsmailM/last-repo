@@ -32,3 +32,10 @@ void Switch::Load(string label, int value) {
 		CompStatus = true;
 	setlabel(label);
 }
+
+Switch* Switch::copy()
+{
+	Switch* PPr = new Switch(m_pGfxInfo, m_Label);
+	this->resistance = resistance;
+	return PPr;
+}
