@@ -1,44 +1,37 @@
-#include "Bulb.h"
-#include <iostream>
-#include <string>
-#include <fstream>
-Bulb::Bulb(GraphicsInfo* r__GfxInfor)
+#include"Bulb.h"
+Bulb::Bulb(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {
+	resistance = 2; // TODO: Take resistance from user
+	sourceVoltage = 0;
 }
-
-Bulb::Bulb(GraphicsInfo* r__GfxInfo,string bname,Status IsOn):Component(r__GfxInfo) {
-	if (Compstate=OFF) {
-		IsOn = OFF;
-	}
-	else {
-		IsOn = ON;
-	}
-	m_Label = bname;
-}
-/*Bulb::Bulb(GraphicsInfo* r_GfxInfo, bool IsOn)
-{
-	this->IsOn = IsOn;
-}*/
 
 void Bulb::Draw(UI* pUI)
 {
-
-	//pUI->DrawBulb(*m_pGfxInfo,IsSelected);
-	pUI->DrawBulb(*m_pGfxInfo,m_Label, selected, IsOn);
-
-
+	//Call output class and pass resistor drawing info to it.
+	int xlabel = m_pGfxInfo->PointsList[0].x;
+	int ylabel = m_pGfxInfo->PointsList[0].y + 50;
+	pUI->labelMsg(getLabel(), xlabel, ylabel);
+	pUI->DrawBulb(*m_pGfxInfo,selected); //update to draw Bulb
 
 }
-
+void Bulb::SaveCircuit(ofstream& CircuitFile)
+{
+	string s = getlabel();
+	if (getlabel() == "")
+		setlabel("Bulb");
+	CircuitFile << "BLB" << "\t" << ID << "\t" << getLabel() << "\t" << resistance<< "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << endl;
+	ID++;
+	setlabel(s);
+}
 void Bulb::Operate()
 {
 
 }
-void Bulb::Load(string label, int value) {
-	resistance = value;
-	setlabel(label);
+void Bulb::Load(int Value, string Label) {
+	resistance=Value;
+	setlabel(Label);
 }
-void  Bulb::savecommponnent(fstream& file) {
-
-	file << "Bulb \t" << to_string(id) << "\t" << m_Label << "\t" << to_string(m_pGfxInfo->PointsList[0].x) << "\t" << to_string(m_pGfxInfo->PointsList[0].y);
+ALLCOMPS Bulb::whichComponent() {
+	return BULB;
 }

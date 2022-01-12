@@ -1,36 +1,43 @@
 #include "Ground.h"
-#include <iostream>
-#include <string>
-#include <fstream>
-Ground::Ground(GraphicsInfo* r_GfxInfo)
+#include "..\Actions\Action.h"
+#include <stdlib.h>
+#include "..\ApplicationManager.h"
+#include "..\UI\UI.h"
+Ground::Ground(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {
+	resistance = 0;
+	sourceVoltage = 0;
 }
-Ground::Ground(GraphicsInfo* r_GfxInfo,string gname) :Component(r_GfxInfo)
-{
-	m_Label = gname;
-}
-//void Ground::ToSim() {}
+
 void Ground::Draw(UI* pUI)
 {
-	pUI->DrawGround(*m_pGfxInfo,m_Label);
+	int xlabel = m_pGfxInfo->PointsList[0].x;
+	int ylabel = m_pGfxInfo->PointsList[0].y + 50;
+
+	pUI->labelMsg(getlabel(), xlabel, ylabel);
+	pUI->DrawGround(*m_pGfxInfo, selected);
+
+
+
 
 }
-
+void Ground::SaveCircuit(ofstream& CircuitFile)
+{
+	string s = getlabel();
+	if (getlabel() == "")
+		setlabel("Ground");
+	CircuitFile << "GND" << "\t" << ID << "\t" << getLabel() << "\t" << -1 << "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << endl;
+	ID++;
+	setlabel(s);
+}
 void Ground::Operate()
 {
 
 }
-
-
-
-void  Ground::savecommponnent(fstream& file) {
-
-	file << "Ground \t" << to_string(id) << "\t" << m_Label << "\t" << to_string(m_pGfxInfo->PointsList[0].x) << "\t" << to_string(m_pGfxInfo->PointsList[0].y);
+void Ground::Load(int Value, string Label) {
+	setlabel(Label);
 }
-void Ground::Load(string label, int value) {
-	setlabel(label);
-	resistance = value;
-
-
-
+ALLCOMPS Ground::whichComponent() {
+	return 	GROUND;
 }

@@ -1,14 +1,16 @@
-#pragma once
+#ifndef GROUND_H
+#define GROUND_H
 #include "Component.h"
 
 class Ground :public Component
 {
 public:
 	Ground(GraphicsInfo* r_GfxInfo);
-	Ground(GraphicsInfo* r_GfxInfo,string g);
-	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the resistor
-	virtual void savecommponnent(fstream& file);
-	virtual void Load(string label, int value);
-	//virtual void ToSim();
+	virtual void Operate();
+	virtual void Load(int Value, string);
+	virtual void SaveCircuit(ofstream& CircuitFile);
+	virtual ALLCOMPS whichComponent();
 };
+
+#endif

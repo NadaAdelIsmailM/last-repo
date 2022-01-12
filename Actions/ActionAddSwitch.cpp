@@ -1,13 +1,12 @@
 #include "ActionAddSwitch.h"
-#include "../ApplicationManager.h"
-
-ActionAddSwitch::ActionAddSwitch(ApplicationManager* pApp) :Action(pApp)
+#include "..\ApplicationManager.h"
+#include "..\UI\UI.h"
+ActionAddSwitch::ActionAddSwitch(ApplicationManager * pApp) :Action(pApp)
 {
 }
 
 ActionAddSwitch::~ActionAddSwitch(void)
 {
-
 }
 
 void ActionAddSwitch::Execute()
@@ -17,18 +16,22 @@ void ActionAddSwitch::Execute()
 	UI* pUI = pManager->GetUI();
 
 	//Print Action Message
-	pUI->PrintMsg("enter a label ");
-	string sname = pUI->GetString();
-	pUI->ClearStatusBar();
+	pUI->PrintMsg("Adding a new resistor: Click anywhere to add");
+
 	//Get Center point of the area where the Comp should be drawn
 
 	pUI->GetPointClicked(Cx, Cy);
+	while (!(Cy > UI::getToolBarHeight() + UI::getCompHeight() / 2
+		&& Cy < UI::Height() - UI::getStatusBarHeight() - UI::getCompHeight() / 2
+		&& Cx > UI::getCompWidth() / 2
+		&& Cx < UI::getWidth() - UI::getCompWidth() / 2)) {
+		pUI->GetPointClicked(Cx, Cy);
+
+	}
 
 	//Clear Status Bar
+	pUI->ClearStatusBar();
 
-	//pUI->PrintMsg("value");
-	//string value = pUI->GetString();
-	//pUI->ClearStatusBar();
 
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
@@ -41,19 +44,21 @@ void ActionAddSwitch::Execute()
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-	Switch* pR = new Switch(pGInfo,sname);
-	pUI->PrintMsg("Enter state of switch, 0=closed& 1=opened");
-	string value = pUI->GetString();
+	Switch* pR = new Switch(pGInfo);
+	string value = pUI->GetString("Enter Switch Value: 1 means closed while 0 means open switch","");
 	if (value != "1" && value != "0")
 		value = "1";
 	pR->setState(stod(value));
 
+	
 
- 
 	pUI->ClearStatusBar();
-	pManager->AddComponent(pR);
-}
 
+
+	pManager->AddComponent(pR);
+
+
+}
 
 void ActionAddSwitch::Undo()
 {}

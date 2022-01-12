@@ -27,13 +27,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -46,7 +46,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -81,7 +81,6 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -111,23 +110,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actions\AcrionAddGround.cpp" />
+    <ClCompile Include="ActionDelete.cpp" />
+    <ClCompile Include="ActionDropDown.cpp" />
     <ClCompile Include="Actions\ActionAddBattery.cpp" />
     <ClCompile Include="Actions\ActionAddBulb.cpp" />
-    <ClCompile Include="Actions\ActionAddBuzz.cpp" />
-    <ClCompile Include="Actions\ActionAddConnec.cpp" />
-    <ClCompile Include="Actions\ActionAddfuse.cpp" />
+    <ClCompile Include="Actions\ActionAddBuzzer.cpp" />
+    <ClCompile Include="Actions\ActionAddConnection.cpp" />
+    <ClCompile Include="Actions\ActionAddGround.cpp" />
+    <ClCompile Include="Actions\ActionAddLabel.cpp" />
+    <ClCompile Include="Actions\AddModule3.cpp" />
     <ClCompile Include="Actions\ActionAddRes.cpp" />
     <ClCompile Include="Actions\ActionAddSwitch.cpp" />
+    <ClCompile Include="Actions\ActionAmmeter.cpp" />
     <ClCompile Include="Actions\ActionDesign.cpp" />
-    <ClCompile Include="Actions\actionEditLabel.cpp" />
-    <ClCompile Include="Actions\ActionExit.cpp" />
-    <ClCompile Include="Actions\Actionsave.cpp" />
+    <ClCompile Include="Actions\ActionEdit.cpp" />
+    <ClCompile Include="Actions\ActionLoad.cpp" />
+    <ClCompile Include="Actions\ActionSave.cpp" />
     <ClCompile Include="Actions\ActionSelect.cpp" />
-    <ClCompile Include="Actions\ActionSwitchActual.cpp" />
-    <ClCompile Include="Actions\ActionSwitchSim.cpp" />
-    <ClCompile Include="Actions\Load.cpp" />
-    <ClCompile Include="AddModule.cpp" />
+    <ClCompile Include="Actions\ActionSwitchSimulation.cpp" />
+    <ClCompile Include="Actions\ActionVoltmeter.cpp" />
+    <ClCompile Include="Actions\ExitAction.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -168,35 +170,38 @@
     <ClCompile Include="Components\Bulb.cpp" />
     <ClCompile Include="Components\Buzzer.cpp" />
     <ClCompile Include="Components\Component.cpp" />
-    <ClCompile Include="Components\Connection.cpp" />
-    <ClCompile Include="Components\elabel.cpp" />
-    <ClCompile Include="Components\fuse.cpp" />
     <ClCompile Include="Components\Ground.cpp" />
+    <ClCompile Include="Components\Module3.cpp" />
     <ClCompile Include="Components\Resistor.cpp" />
     <ClCompile Include="Components\Switch.cpp" />
+    <ClCompile Include="Connections\Connection.cpp" />
+    <ClCompile Include="Copy.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Module3.cpp" />
+    <ClCompile Include="ActionPaste.cpp" />
     <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionDelete.h" />
+    <ClInclude Include="ActionDropDown.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddBattery.h" />
     <ClInclude Include="Actions\ActionAddBulb.h" />
-    <ClInclude Include="Actions\ActionAddBuzz.h" />
-    <ClInclude Include="Actions\ActionAddConnec.h" />
-    <ClInclude Include="Actions\ActionAddfuse.h" />
+    <ClInclude Include="Actions\ActionAddBuzzer.h" />
+    <ClInclude Include="Actions\ActionAddConnection.h" />
     <ClInclude Include="Actions\ActionAddGround.h" />
+    <ClInclude Include="Actions\ActionAddLabel.h" />
+    <ClInclude Include="Actions\AddModule3.h" />
     <ClInclude Include="Actions\ActionAddRes.h" />
     <ClInclude Include="Actions\ActionAddSwitch.h" />
+    <ClInclude Include="Actions\ActionAmmeter.h" />
     <ClInclude Include="Actions\ActionDesign.h" />
-    <ClInclude Include="Actions\actionEditLabel.h" />
-    <ClInclude Include="Actions\ActionExit.h" />
+    <ClInclude Include="Actions\ActionEdit.h" />
+    <ClInclude Include="Actions\ActionLoad.h" />
     <ClInclude Include="Actions\ActionSave.h" />
     <ClInclude Include="Actions\ActionSelect.h" />
-    <ClInclude Include="Actions\ActionSwitchActual.h" />
-    <ClInclude Include="Actions\ActionSwitchSim.h" />
-    <ClInclude Include="Actions\Load.h" />
-    <ClInclude Include="AddModule.h" />
+    <ClInclude Include="Actions\ActionSwitchSimulation.h" />
+    <ClInclude Include="Actions\ActionVoltmeter.h" />
+    <ClInclude Include="Actions\ExitAction.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -221,33 +226,19 @@
     <ClInclude Include="Components\Bulb.h" />
     <ClInclude Include="Components\Buzzer.h" />
     <ClInclude Include="Components\Component.h" />
-    <ClInclude Include="Components\Connection.h" />
-    <ClInclude Include="Components\elabel.h" />
-    <ClInclude Include="Components\fuse.h" />
     <ClInclude Include="Components\Ground.h" />
+    <ClInclude Include="Components\Module3.h" />
     <ClInclude Include="Components\Resistor.h" />
     <ClInclude Include="Components\Switch.h" />
+    <ClInclude Include="Connections\Connection.h" />
+    <ClInclude Include="Copy.h" />
     <ClInclude Include="Defs.H" />
-    <ClInclude Include="Module3.h" />
+    <ClInclude Include="ActionPaste.h" />
     <ClInclude Include="UI\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMUgraphicsLib\Manual.txt" />
     <Text Include="CMUgraphicsLib\Readme.txt" />
-    <Text Include="trial.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
-    <None Include="UpgradeLog.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Images\Comp\Battery.jpg" />
-    <Image Include="Images\Menu\Menu_Simm.jpg" />
-    <Image Include="Images\Sim Menu\Menu_Design.jpg" />
-    <Image Include="Images\Sim Menu\Menu_Exit.jpg" />
-    <Image Include="Images\Sim Menu\Menu_Simulate.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

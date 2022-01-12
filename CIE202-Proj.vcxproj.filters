@@ -17,12 +17,12 @@
     <Filter Include="UI">
       <UniqueIdentifier>{313e712a-b5b0-429f-8d17-c3cf963424db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Connections">
+      <UniqueIdentifier>{90417af7-b9ce-46ba-be0b-c99b03425221}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Components\Component.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Connection.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp">
@@ -138,79 +138,93 @@
     <ClCompile Include="Components\Resistor.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Connections\Connection.cpp">
+      <Filter>Connections</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Bulb.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\ActionAddRes.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\AcrionAddGround.cpp">
+    <ClCompile Include="Actions\ActionAddBulb.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Buzzer.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddBuzzer.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ExitAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddConnection.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionSelect.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionEdit.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAddLabel.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\ActionAddBattery.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Components\Battery.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Ground.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\ActionAddfuse.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\ActionAddSwitch.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Components\fuse.cpp">
+    <ClCompile Include="Actions\ActionAddGround.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Battery.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="Components\Switch.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\ActionAddBulb.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\ActionAddBuzz.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\ActionAddConnec.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Bulb.cpp">
+    <ClCompile Include="Components\Ground.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Components\Buzzer.cpp">
+    <ClCompile Include="Actions\ActionSave.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionLoad.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionSwitchSimulation.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionAmmeter.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionDesign.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionVoltmeter.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Module3.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\Load.cpp">
+    <ClCompile Include="Actions\AddModule3.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\ActionDesign.cpp" />
-    <ClCompile Include="Actions\ActionExit.cpp" />
-    <ClCompile Include="Actions\ActionSelect.cpp" />
-    <ClCompile Include="Actions\ActionSwitchActual.cpp" />
-    <ClCompile Include="Actions\ActionSwitchSim.cpp" />
-    <ClCompile Include="Actions\actionEditLabel.cpp">
+    <ClCompile Include="ActionPaste.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\Actionsave.cpp">
+    <ClCompile Include="ActionDelete.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Components\elabel.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Module3.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="AddModule.cpp">
+    <ClCompile Include="ActionDropDown.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Copy.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Components\Component.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Connection.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\Action.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -275,14 +289,50 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="ApplicationManager.h" />
-    <ClInclude Include="Defs.H" />
     <ClInclude Include="Components\Resistor.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionAddRes.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Components\Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Connections\Connection.h">
+      <Filter>Connections</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Bulb.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddBulb.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Defs.H" />
+    <ClInclude Include="Components\Buzzer.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddBuzzer.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ExitAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddConnection.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionSelect.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionEdit.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddLabel.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\ActionAddBattery.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAddSwitch.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionAddGround.h">
@@ -291,59 +341,46 @@
     <ClInclude Include="Components\Battery.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Ground.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ActionAddfuse.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ActionAddSwitch.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\fuse.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Components\Switch.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\ActionAddBulb.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ActionAddBuzz.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ActionAddConnec.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Bulb.h">
+    <ClInclude Include="Components\Ground.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Buzzer.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\Load.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\ActionDesign.h" />
-    <ClInclude Include="Actions\ActionExit.h" />
-    <ClInclude Include="Actions\ActionSelect.h" />
-    <ClInclude Include="Actions\ActionSwitchActual.h" />
-    <ClInclude Include="Actions\ActionSwitchSim.h" />
-    <ClInclude Include="Actions\actionEditLabel.h">
-      <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ActionSave.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Components\elabel.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="AddModule.h">
+    <ClInclude Include="Actions\ActionLoad.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Module3.h">
+    <ClInclude Include="Actions\ActionSwitchSimulation.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionAmmeter.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionDesign.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionVoltmeter.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Module3.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\AddModule3.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionDropDown.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionPaste.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionDelete.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Copy.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMUgraphicsLib\Manual.txt">
@@ -352,27 +389,5 @@
     <Text Include="CMUgraphicsLib\Readme.txt">
       <Filter>CMUgrahpics Library</Filter>
     </Text>
-    <Text Include="trial.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
-    <None Include="UpgradeLog.htm" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Images\Comp\Battery.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Images\Sim Menu\Menu_Simulate.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Images\Sim Menu\Menu_Exit.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Images\Sim Menu\Menu_Design.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Images\Menu\Menu_Simm.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

@@ -1,17 +1,16 @@
-#pragma once
+#ifndef RESISTOR_H
+#define RESISTOR_H
+
 #include "Component.h"
 
 class Resistor:public Component
 {
-	
 public:
-	Resistor(GraphicsInfo* r_GfxInfo);
-	Resistor(GraphicsInfo *r_GfxInfo,string b);
-	Resistor();
-	
-	virtual void Operate();	//Calculates the volt on both terminals
+	Resistor(GraphicsInfo *r_GfxInfo);
 	virtual void Draw(UI*);	//Draws the resistor
-	virtual void Load(string label, int value);
-	void  Resistor::savecommponnent(fstream& file);
-	//virtual void ToSim();
+	virtual void Operate();
+	virtual void Load(int Value, string);
+	virtual void SaveCircuit(ofstream& CircuitFile);
+	virtual ALLCOMPS whichComponent();
 };
+#endif

@@ -17,7 +17,7 @@ void ActionDesign::Execute()
 {
 	UI* pUI = pManager->GetUI();
 	pUI->CreateDesignToolBar();
-
+	
 }
 
 void ActionDesign::Undo()

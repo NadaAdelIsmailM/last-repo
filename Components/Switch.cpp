@@ -1,47 +1,45 @@
 #include "Switch.h"
-#include <iostream>
-#include <string>
-#include <fstream>
-
-Switch::Switch(GraphicsInfo* r_GfxInfo)
+#include "..\Actions\Action.h"
+#include <stdlib.h>
+Switch::Switch(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {
-}
-Switch::Switch(GraphicsInfo* r_GfxInfo,string sname) :Component(r_GfxInfo)
-{
-	m_Label = sname;
+	resistance = 2;
+	sourceVoltage = 0;
 }
 
 void Switch::Draw(UI* pUI)
 {
-	//Call output class and pass switch drawing info to it.
-	int xl = m_pGfxInfo->PointsList[0].x;
-	int yl = m_pGfxInfo->PointsList[0].y + 50;
-	pUI->labelMsg(getlabel(), xl, yl);
-	if (Compstate == ON)
-		pUI->DrawOpenedSwitch(*m_pGfxInfo, m_Label, selected);
+	int xlabel = m_pGfxInfo->PointsList[0].x;
+	int ylabel = m_pGfxInfo->PointsList[0].y + 50;
+
+	pUI->labelMsg(getlabel(), xlabel, ylabel);
+	if(CompStatus==ON)
+		pUI->DrawOpenSwitch(*m_pGfxInfo, selected);
 	else
-		pUI->DrawClosedSwitch(*m_pGfxInfo, m_Label, selected); //update to draw switch
-
-}//void Switch::ToSim() {
-	/*UI* pUI;
-	if (isSelected) {
-		if (Compstate == ON) { pUI->DrawClosedSwitch(*m_pGfxInfo, m_Label, false); }
-		else { pUI->DrawOpenedSwitch(*m_pGfxInfo, m_Label, false); }
-	}*/
+		pUI->DrawClosedSwitch(*m_pGfxInfo, selected);
 
 
+
+
+}
 void Switch::Operate()
 {
-}
-void  Switch::savecommponnent(fstream& file) {
 
-	file << "Switch \t" << to_string(id) << "\t" << m_Label << "\t" << to_string(m_pGfxInfo->PointsList[0].x) << "\t" << to_string(m_pGfxInfo->PointsList[0].y);
 }
-
-void Switch::Load(string label, int value) {
-	if (value == 0)
-		Compstate = ON;
-	else
-		Compstate = OFF;
-	setlabel(label);
+void Switch::Load(int Value, string Label) {
+	CompStatus = Status(Value);
+	setlabel(Label);
+}
+void Switch::SaveCircuit(ofstream& CircuitFile)
+{
+	string s = getlabel();
+	if (getlabel() == "")
+		setlabel("Switch");
+	CircuitFile << "SWT" <<"\t"<<ID<< "\t" <<getLabel()<<"\t"<<getCompState()<<"\t"<< m_pGfxInfo->PointsList[0].x
+	<< "\t" << m_pGfxInfo->PointsList[0].y<< endl;
+	ID++;
+	setlabel(s);
+}
+ALLCOMPS Switch::whichComponent() {
+	return 	SWITCH;
 }

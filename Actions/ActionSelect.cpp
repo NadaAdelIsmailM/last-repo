@@ -1,7 +1,6 @@
 #include "ActionSelect.h"
 #include "..\ApplicationManager.h"
-#include "../UI/UI.h"
-
+#include "..\UI\UI.h"
 ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 {
 }
@@ -15,13 +14,15 @@ void ActionSelect::Execute() {
 	y = pUI->getYnew();
 	Component* comp1 = pManager->GetComponentByCoordinates(x, y);
 	Connection* conn1 = pManager->GetConnByCoordinates(x, y);
-	if (comp1 != nullptr) {
-
-		comp1->Select();
+	if (comp1 != nullptr){
+		
+		//pManager->UnselectAll(comp1); //this line was used to make no more than one thing to be selected
+		comp1->Selection();
 	}
 	else if (conn1 != nullptr) {
- 
-		conn1->Select();
+		
+		//pManager->UnselectAll(conn1); 
+		conn1->Selection();
 	}
 
 }

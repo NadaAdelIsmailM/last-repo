@@ -1,28 +1,22 @@
 #pragma once
 
-#include "action.h"
-#include <iostream>
-#include <fstream>
-using namespace std;
+#include "Action.h"
+#include "..\Components\Component.h"
 
 
-//Class responsible for adding a new resistor action
-class Actionsave : public Action
+class ActionSave : public Action
 {
 private:
-	fstream file;
+	ofstream CircuitFile;
+	int x, y;
 
 public:
-	Actionsave(ApplicationManager* pApp);
-
-	virtual ~Actionsave(void);
+	ActionSave(ApplicationManager* pApp);
+	virtual ~ActionSave(void);
 
 	//Execute action (code depends on action type)
 	virtual void Execute();
 
 	virtual void Undo();
-
 	virtual void Redo();
-
-
 };

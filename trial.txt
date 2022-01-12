@@ -1,6 +1,0 @@
-2
-RES 1 res1 1 523 193
-SWT 2 switch 0 376 193
-Connections
-1
-2 1 376 193 523 193

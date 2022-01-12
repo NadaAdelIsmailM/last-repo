@@ -1,15 +1,17 @@
-#pragma once
-#include"Resistor.h"
+#ifndef BUZZER_H
+#define BUZZER_H
 
-class Buzzer :public Component
+#include "Component.h"
+
+class Buzzer:public Component
 {
-	Resistor internalres;
 public:
 	Buzzer(GraphicsInfo* r_GfxInfo);
-	Buzzer(GraphicsInfo* r_GfxInfo,string s);
+	virtual void Draw(UI*);	//Draws the resistor
 	virtual void Operate();
-	virtual void Draw(UI*);
-	virtual void Load(string label, int value);
-	virtual void savecommponnent(fstream& file);
-	//virtual void ToSim();
+	virtual void Load(int Value, string);
+	virtual void SaveCircuit(ofstream& CircuitFile);
+	virtual ALLCOMPS whichComponent();
+
 };
+#endif

@@ -1,15 +1,15 @@
 #pragma once
 
 #include "Action.h"
-#include "../Components/Component.h"
+#include "..\Components\Component.h"
 
 
 class ActionSelect : public Action
 {
 private:
-
+	
 	int x, y;
-
+	
 public:
 	ActionSelect(ApplicationManager* pApp);
 	virtual ~ActionSelect(void);

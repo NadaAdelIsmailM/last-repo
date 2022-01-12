@@ -1,39 +1,44 @@
 #include "Resistor.h"
-#include <iostream>
-#include <string>
-#include <fstream>
-Resistor::Resistor() {
-	
-}
-//void Resistor::ToSim() {}
-Resistor::Resistor(GraphicsInfo* r_GfxInfo)
+#include "..\Actions\Action.h"
+#include <stdlib.h>
+#include "..\ApplicationManager.h"
+#include "..\UI\UI.h"
+Resistor::Resistor(GraphicsInfo *r_GfxInfo):Component(r_GfxInfo)
 {
+	resistance = 2;
+	sourceVoltage = 0;
 }
-
-Resistor::Resistor(GraphicsInfo *r_GfxInfo,string b):Component(r_GfxInfo)
-{
-	this->resistance = resistance;
-	m_Label = b;
-}
-
 
 void Resistor::Draw(UI* pUI)
-{	
-	//Call output class and pass resistor drawing info to it.
-	pUI->DrawResistor(*m_pGfxInfo,m_Label, selected); //update to draw resistor
-
+{
+	int xlabel = m_pGfxInfo->PointsList[0].x;
+	int ylabel = m_pGfxInfo->PointsList[0].y+50;
+	
+	pUI->labelMsg(getlabel(), xlabel, ylabel);
+	pUI->DrawResistor(*m_pGfxInfo,selected); 
+	
+	
+	
+	
 }
-
+void Resistor::SaveCircuit(ofstream& CircuitFile)
+{
+	string s = getlabel();
+	if (getlabel() == "")
+		setlabel("Resistor");
+	CircuitFile << "RES" << "\t" << ID << "\t" << getLabel() << "\t" << resistance << "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << endl;
+	ID++;
+	setlabel(s);
+}
 void Resistor::Operate()
 {
 
 }
-void Resistor::Load(string label, int value) {
-	resistance = value;
-	setlabel(label);
+void Resistor::Load(int Value, string Label) {
+	resistance = Value;
+	setlabel(Label);
 }
-
-void  Resistor::savecommponnent(fstream& file) {
-
-	file << "Resistor  \t" << to_string(id) << "\t" << m_Label << "\t" << to_string(m_pGfxInfo->PointsList[0].x) << "\t" << to_string(m_pGfxInfo->PointsList[0].y);
+ALLCOMPS Resistor::whichComponent() {
+	return 	RESISTOR;
 }

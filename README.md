@@ -1,2 +1,1 @@
-# cie-202
-# OurProject
+# Electric-Circuit-Simulator

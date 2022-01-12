@@ -1,14 +1,15 @@
-#pragma once
+#ifndef BATTERY_H
+#define BATTERY_H
 #include "Component.h"
 
 class Battery :public Component
 {
 public:
 	Battery(GraphicsInfo* r_GfxInfo);
-	Battery(GraphicsInfo* r_GfxInfo,string b);
-	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the resistor
-	virtual void savecommponnent(fstream& file);
-	virtual void Load(string label, int value);
-	//virtual void ToSim();
+	virtual void Operate();
+	virtual void Load(int Value,string Label);
+	virtual void SaveCircuit(ofstream& CircuitFile);
+	virtual ALLCOMPS whichComponent();
 };
+#endif
