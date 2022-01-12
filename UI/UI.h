@@ -97,17 +97,22 @@ class UI
 
 
 	window *pWind;
-	int xnew, ynew;
+
 public:
 	
 	UI();
+	static int getToolBarHeight();
+	static int Height();
+	static int getWidth();
+	static int getStatusBarHeight();
 	int getCompWidth() const;	//returns Component width
 	int getCompHeight() const;	//returns Component height
 	
 	
 	// Input Functions  ---------------------------
 	void GetPointClicked(int &, int &);	//Get coordinate where user clicks
-	string GetString();		//Returns a string entered by the user
+	void GetLastPointClicked(int& x, int& y);
+	string GetString(string msg = "Enter the Value", string value = "1");		//Returns a string entered by the user
 
 	ActionType GetUserAction() const; //Reads the user click and maps it to an action
 	int getXnew();

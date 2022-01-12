@@ -22,11 +22,21 @@ UI::UI()
 
 	CreateDesignToolBar();	//Create the desgin toolbar
 	CreateStatusBar();		//Create Status bar
-	xnew = 0;
-	ynew = 0;
+	
 }
 
-
+int UI::getToolBarHeight() {
+	return ToolBarHeight;
+}
+int UI::Height() {
+	return height;
+}
+int UI::getWidth() {
+	return width;
+}
+int UI::getStatusBarHeight() {
+	return StatusBarHeight;
+}
 int UI::getCompWidth() const
 {
 	return COMP_WIDTH;
@@ -46,38 +56,44 @@ void UI::GetPointClicked(int &x, int &y)
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string UI::GetString()
+void UI::GetLastPointClicked(int& x, int& y)
+{
+	pWind->GetMouseCoord(x, y);
+}
+
+string UI::GetString(string msg, string value)
 {
 	//Reads a complete string from the user until the user presses "ENTER".
 	//If the user presses "ESCAPE". This function should return an empty string.
 	//"BACKSPACE" is also supported
 	//User should see what he is typing at the status bar
 
-
+	UI::PrintMsg(msg);
 	string userInput;
 	char Key;
-	while(1)
+	userInput = value;
+	while (1)
 	{
 		pWind->WaitKeyPress(Key);
 
-		switch(Key)
+		switch (Key)
 		{
 		case 27: //ESCAPE key is pressed
 			PrintMsg("");
 			return ""; //returns nothing as user has cancelled the input
-		
+
 		case 13:		//ENTER key is pressed
 			return userInput;
-		
+
 		case 8:		//BackSpace is pressed
-			if(userInput.size() > 0)
-				userInput.resize(userInput.size() -1 );
+			if (userInput.size() > 0)
+				userInput.resize(userInput.size() - 1);
 			break;
-		
+
 		default:
-			userInput+= Key;
+			userInput += Key;
 		};
-		
+
 		PrintMsg(userInput);
 	}
 
@@ -144,12 +160,6 @@ ActionType UI::GetUserAction() const
 	}
 }
 
-int UI::getXnew() {
-	return xnew;
-}
-int UI::getYnew() {
-	return ynew;
-}
 
 //======================================================================================//
 //								Output Functions										//
@@ -324,7 +334,7 @@ void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, string b, bool selected) 
 	if (selected)
 		pWind->SetPen(RED, 6);
 	else
-		pWind->SetPen(BLACK, 5);
+		pWind->SetPen(BLACK, 6);
 
 	pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y, FRAME);
 	pWind->SetPen(BROWN);
@@ -366,7 +376,7 @@ void UI::DrawSwitch(const GraphicsInfo& r_GfxInfo, string b, bool selected) cons
 {
 	string SwitchImage;
 	if (selected)
-		SwitchImage = "Images\\comp\\Switchclosed.jpg";	//use image of closed switch
+		SwitchImage = "Images\\comp\\Switchclosed_HI.jpg";	//use image of closed switch
 	else
 		SwitchImage = "Images\\comp\\switchopen.jpg";	//use image of the open switch
 
@@ -380,7 +390,7 @@ void UI::DrawFuse(const GraphicsInfo& r_GfxInfo, string f, bool selected) const
 {
 	string FuseImage;
 	if (selected)
-		FuseImage = "Images\\comp\\coloredfuse.jpg";	//use image of highlighted fuse
+		FuseImage = "Images\\comp\\fuse_HI.jpg";	//use image of highlighted fuse
 	else
 		FuseImage = "Images\\comp\\fuse.jpg";	//use image of the normal fuse
 
