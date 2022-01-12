@@ -16,15 +16,15 @@ void ActionAddBulb::Execute()
 	UI* pUI = pManager->GetUI();
 
 
-	pUI->PrintMsg("Adding a new bulb: Click anywhere to add");
-
-
+	pUI->PrintMsg("enter the label of the bulb");
+	string bname=pUI->GetString();
+	pUI->ClearStatusBar();
 	pUI->GetPointClicked(Cx, Cy);
 
 
 	pUI->ClearStatusBar();
 
-
+	
 	GraphicsInfo* pGInfo = new GraphicsInfo(2);
 
 	int compWidth = pUI->getCompWidth();
@@ -35,10 +35,10 @@ void ActionAddBulb::Execute()
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 	pUI->PrintMsg("Is the bulb on or off? <y/n>");
-	addIsOnS=pUI->GetSrting();
+	addIsOnS=pUI->GetString();
 	while ((addIsOnS != "y") && (addIsOnS != "n")) 
 	{pUI->PrintMsg("Error!!! Enter 'y' for yes and 'n' for no.");
-	addIsOnS = pUI->GetSrting();
+	addIsOnS = pUI->GetString();
 	};
 	if (addIsOnS == "y")
 	{
@@ -50,7 +50,7 @@ void ActionAddBulb::Execute()
 		addIsOn = false;
 		pUI->PrintMsg("Creating an off bulb");
 	}
-	Bulb* pR = new Bulb(pGInfo,addIsOn);
+	Bulb* pR = new Bulb(pGInfo,bname);
 	pManager->AddComponent(pR);
 }
 

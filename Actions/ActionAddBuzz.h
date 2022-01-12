@@ -8,6 +8,7 @@ private:
 	
 	int Cx, Cy;	
 	int x1, y1, x2, y2;	
+	string zname;
 public:
 	ActionAddBuzz(ApplicationManager* pApp);
 	virtual ~ActionAddBuzz(void);

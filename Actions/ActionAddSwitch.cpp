@@ -17,19 +17,18 @@ void ActionAddSwitch::Execute()
 	UI* pUI = pManager->GetUI();
 
 	//Print Action Message
-	pUI->PrintMsg("Adding a new Switch: Click anywhere to add");
-
+	pUI->PrintMsg("enter a label ");
+	string sname = pUI->GetString();
+	pUI->ClearStatusBar();
 	//Get Center point of the area where the Comp should be drawn
 
 	pUI->GetPointClicked(Cx, Cy);
 
 	//Clear Status Bar
-	pUI->ClearStatusBar();
-	pUI->PrintMsg("Label");
-	string label = pUI->GetSrting();
-	pUI->PrintMsg("value");
-	string value = pUI->GetSrting();
-	pUI->ClearStatusBar();
+
+	//pUI->PrintMsg("value");
+	//string value = pUI->GetString();
+	//pUI->ClearStatusBar();
 
 	GraphicsInfo* pGInfo = new GraphicsInfo(2); //Gfx info to be used to construct the Comp
 
@@ -42,7 +41,7 @@ void ActionAddSwitch::Execute()
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-	Switch* pR = new Switch(pGInfo);
+	Switch* pR = new Switch(pGInfo,sname);
 	pManager->AddComponent(pR);
 }
 
@@ -51,6 +50,4 @@ void ActionAddSwitch::Undo()
 {}
 
 void ActionAddSwitch::Redo()
-{}
-void ActionAddSwitch::loadcircuit() 
 {}

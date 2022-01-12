@@ -11,9 +11,6 @@ private:
 	int x, y;
 
 public:
-	Component* comp1;
-	Component* rptr();
-
 	ActionSelect(ApplicationManager* pApp);
 	virtual ~ActionSelect(void);
 

@@ -9,7 +9,6 @@ ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 ActionSelect::~ActionSelect(void)
 {
 }
-
 void ActionSelect::Execute() {
 	UI* pUI = pManager->GetUI();//Gets a pointer to the user interface
 	pUI->GetLastPointClicked(x, y);
@@ -18,13 +17,12 @@ void ActionSelect::Execute() {
 	if (comp1 != nullptr) {
 
 		comp1->Select();
-
 	}
 	
 
 	if (conn1 != nullptr) {
  
-	/*	conn1->Select();*/
+		conn1->Select();
 	}
 	else {
 
@@ -41,7 +39,3 @@ void ActionSelect::Undo()
 
 void ActionSelect::Redo()
 {}
-
-Component* ActionSelect::rptr() {
-	return comp1;
-}
