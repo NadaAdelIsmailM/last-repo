@@ -1,6 +1,6 @@
 #include "ActionAddBattery.h"
 #include "..\ApplicationManager.h"
-#include "..\Components\Battery.h"
+#include "../Components/Battery.h"
 
 
 ActionAddBattery::ActionAddBattery(ApplicationManager* pApp) :Action(pApp)
@@ -19,18 +19,17 @@ void ActionAddBattery::Execute()
 	UI* pUI = pManager->GetUI();
 
 	//Print Action Message
-	pUI->PrintMsg("Add the label of the battery");
-	bname = pUI->GetString();
+	pUI->PrintMsg("Adding a new battery: Click anywhere to add");
+
 	//Get Center point of the area where the Comp should be drawn
 	pUI->GetPointClicked(Cx, Cy);
 
 	//Clear Status Bar
 	pUI->ClearStatusBar();
 
-	
 	pUI->PrintMsg("enter the volt of the battery");
-	
-	vol = pUI->GetString();   //get the voltage of the battery 
+
+	string vol = pUI->GetSrting();   //get the voltage of the battery 
 	//double volt = stod(vol);
 	pUI->ClearStatusBar();
 
@@ -45,7 +44,7 @@ void ActionAddBattery::Execute()
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
-	Battery* pB = new Battery(pGInfo,bname);
+	Battery* pB = new Battery(pGInfo);
 	pManager->AddComponent(pB);
 }
 

@@ -1,7 +1,6 @@
 #include "ActionAddConnec.h"
-#include "../ApplicationManager.h"
+#include "..\ApplicationManager.h"
 #include "../Components/Connection.h"
-#include"../UI/UI.h"
 
 ActionAddConnec::ActionAddConnec(ApplicationManager* pApp) :Action(pApp)
 {
@@ -22,8 +21,8 @@ void ActionAddConnec::Execute()
 	pUI->PrintMsg("Adding a new connection: Click on the first component");
 	
 	pUI->GetPointClicked(x1, y1);
-
-	while (!pManager->ValidConnectionPoint(x1, y1,cmp1))
+	cmp1 = pManager->ValidPoint(x1, y1);
+	while (cmp1==nullptr)
 	{
 		pUI->PrintMsg("Error!!! Invalid Connection point. Click agian to add first connection point.");
 		pUI->GetPointClicked(x1, y1);
@@ -34,46 +33,38 @@ void ActionAddConnec::Execute()
 	
 	pUI->PrintMsg("Adding a new connection: Click on the Second component");
 	pUI->GetPointClicked(x2,y2);
-
-	
-	while (!pManager->ValidConnectionPoint(x2, y2, cmp2))
+	cmp2 = pManager->ValidPoint(x2, y2);
+	while (cmp2 == nullptr)
 	{
 		pUI->PrintMsg("Error!!! Invalid Connection point. Click agian to add second connection point.");
-		pUI->GetPointClicked(x2, y2);
+		pUI->GetPointClicked(x1, y1);
 
 	};
 	pGInfo->PointsList[1].x = x2;
 	pGInfo->PointsList[1].y = y2;
-	pUI->PrintMsg("enter the label of the connection!");
-	string sname=pUI->GetString();
-
-
-	/*if (x1 > x2) {
-		pGInfo->PointsList[0].x = cmp1->m_pGfxInfo->PointsList[1].x;
-		pGInfo->PointsList[1].x = cmp2->m_pGfxInfo->PointsList[0].x;
+	/*
+	if (x1 > x2) {
+		pGInfo->PointsList[0].x = cmp1->m_pGfxInfo->PointsList[0].x;
+		pGInfo->PointsList[1].x = cmp2->m_pGfxInfo->PointsList[1].x;
 
 	}
 	else if (x1<x2) {
-		pGInfo->PointsList[0].x = cmp1->m_pGfxInfo->PointsList[0].x;
-		pGInfo->PointsList[1].x = cmp2->m_pGfxInfo->PointsList[1].x;
+		pGInfo->PointsList[0].x = cmp1->m_pGfxInfo->PointsList[1].x;
+		pGInfo->PointsList[1].x = cmp2->m_pGfxInfo->PointsList[0].x;
 	}
 	if (y1 > y2) {
-		pGInfo->PointsList[0].y = cmp1->m_pGfxInfo->PointsList[1].y;
-		pGInfo->PointsList[1].y = cmp2->m_pGfxInfo->PointsList[0].y;
+		pGInfo->PointsList[0].y = cmp1->m_pGfxInfo->PointsList[0].y;
+		pGInfo->PointsList[1].y = cmp2->m_pGfxInfo->PointsList[1].y;
 
 	}
 	else if (x1 < x2) {
-		pGInfo->PointsList[0].y = cmp1->m_pGfxInfo->PointsList[0].y;
-		pGInfo->PointsList[1].y = cmp2->m_pGfxInfo->PointsList[1].y;
+		pGInfo->PointsList[0].y = cmp1->m_pGfxInfo->PointsList[1].y;
+		pGInfo->PointsList[1].y = cmp2->m_pGfxInfo->PointsList[0].y;
 	}*/
 
 	pUI->ClearStatusBar();
 
-	Connection* pR = new Connection(pGInfo,sname,cmp1,cmp2);
-		cmp1->addTerm2Conn(pR);
-	
-		cmp2->addTerm2Conn(pR);
-	
+	Connection* pR = new Connection(pGInfo,cmp1,cmp2);
 	pManager->AddConnection(pR);
 }
 
