@@ -17,6 +17,7 @@ protected:
 	double term1_volt, term2_volt;	//voltage at terminals 1&2
 	//static int ID;
 	double resistance;
+	double sourceVoltage; // internal resistance and voltage jump introduced by source
 	bool selected;
 	bool CompStatus;
 	//Each terminal is connected to set of connections
@@ -34,7 +35,6 @@ protected:
 
 
 public:
-	GraphicsInfo *grt;
 	Component(GraphicsInfo *r_GfxInfo);
 	//void setTerm1Volt(double v);		//sets the voltage at terminal1
 	//void setTerm2Volt(double v);		//sets the voltage at terminal2
@@ -54,9 +54,16 @@ public:
 	bool isSelected();
 	void Select();
 	void unSelect();
+	int getTermcount(TerminalNum Term);
+	Connection** getTermConn(TerminalNum Term);
 	void setState(int S);
 	int getResistance();
+	void setSourceVoltage(int V);
+	int getSourceVoltage();
+	//void setState(int S);
 	bool getCompState();
+	void setTermi1Volt(double v);		//sets the voltage at terminal1
+	void setTermi2Volt(double v);		//sets the voltage at terminal2
 	void setlabel(string s);
 	string getlabel() const;
 	int gitid();
@@ -66,8 +73,9 @@ public:
 	//virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 	virtual void savecommponnent(fstream& file)=0;
 	virtual void Load(string label,int value)=0;
-	virtual Component* copy() = 0;
+	TerminalNum WhatTerminal(Connection* Conn); // returns the terminal to which a connection is connected
 
+	Component();	
 	
 	//Destructor must be virtual
 	virtual ~Component();

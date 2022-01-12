@@ -5,11 +5,9 @@
 fuse::fuse(GraphicsInfo* r_GfxInfo)
 {
 }
-
-fuse::fuse(GraphicsInfo* r_GfxInfo,string k,string m) :Component(r_GfxInfo)
+fuse::fuse(GraphicsInfo* r_GfxInfo,string k) :Component(r_GfxInfo)
 {
 	m_Label = k;
-	max_current = stoi(m);
 }
 
 void fuse::Draw(UI* pUI)
@@ -23,7 +21,6 @@ void fuse::Operate()
 {
 
 }
-
 void fuse::Load(string label, int value) {
 	resistance = value;
 	setlabel(label);
@@ -32,11 +29,4 @@ void fuse::Load(string label, int value) {
 void  fuse::savecommponnent(fstream& file) {
 
 	file << "fuse \t" << to_string(id) << "\t" << m_Label << "\t" << to_string(m_pGfxInfo->PointsList[0].x) << "\t" << to_string(m_pGfxInfo->PointsList[0].y);
-}
-
-bool fuse::belw(int current) {
-	if (current > max_current) {
-		return true;
-	}
-	else return false;
 }
