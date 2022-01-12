@@ -11,18 +11,27 @@ ActionSelect::~ActionSelect(void)
 }
 void ActionSelect::Execute() {
 	UI* pUI = pManager->GetUI();//Gets a pointer to the user interface
-	x = pUI->getXnew();//Gets the coordinates which the user clicked on
-	y = pUI->getYnew();
+	pUI->GetLastPointClicked(x, y);
 	Component* comp1 = pManager->GetComponentByCoordinates(x, y);
 	Connection* conn1 = pManager->GetConnByCoordinates(x, y);
 	if (comp1 != nullptr) {
 
 		comp1->Select();
 	}
-	else if (conn1 != nullptr) {
+	
+
+	if (conn1 != nullptr) {
  
 		conn1->Select();
 	}
+	else {
+
+		pManager->UnselectAll();
+	}
+	//pUI->ClearDrawingArea();
+	pManager->UpdateInterface();
+
+
 
 }
 void ActionSelect::Undo()
