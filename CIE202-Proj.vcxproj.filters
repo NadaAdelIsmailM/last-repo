@@ -183,11 +183,6 @@
     <ClCompile Include="Actions\Load.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\ActionDesign.cpp" />
-    <ClCompile Include="Actions\ActionExit.cpp" />
-    <ClCompile Include="Actions\ActionSelect.cpp" />
-    <ClCompile Include="Actions\ActionSwitchActual.cpp" />
-    <ClCompile Include="Actions\ActionSwitchSim.cpp" />
     <ClCompile Include="Actions\actionEditLabel.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -196,6 +191,25 @@
     </ClCompile>
     <ClCompile Include="Components\elabel.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionDesign.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionExit.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionSelect.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionSwitchActual.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionSwitchSim.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionCopy.cpp" />
+    <ClCompile Include="Actions\ActionCopy.cpp">
+      <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -318,11 +332,6 @@
     <ClInclude Include="Actions\Load.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\ActionDesign.h" />
-    <ClInclude Include="Actions\ActionExit.h" />
-    <ClInclude Include="Actions\ActionSelect.h" />
-    <ClInclude Include="Actions\ActionSwitchActual.h" />
-    <ClInclude Include="Actions\ActionSwitchSim.h" />
     <ClInclude Include="Actions\actionEditLabel.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -331,6 +340,25 @@
     </ClInclude>
     <ClInclude Include="Components\elabel.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionDesign.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionExit.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionSelect.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionSwitchActual.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionSwitchSim.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionCopy.h" />
+    <ClInclude Include="Actions\ActionCopy.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionCopy.cpp" />
     <ClCompile Include="Actions\AcrionAddGround.cpp" />
     <ClCompile Include="Actions\ActionAddBattery.cpp" />
     <ClCompile Include="Actions\ActionAddBulb.cpp" />
@@ -119,6 +120,7 @@
     <ClCompile Include="Actions\ActionAddfuse.cpp" />
     <ClCompile Include="Actions\ActionAddRes.cpp" />
     <ClCompile Include="Actions\ActionAddSwitch.cpp" />
+    <ClCompile Include="Actions\ActionCopy.cpp" />
     <ClCompile Include="Actions\ActionDesign.cpp" />
     <ClCompile Include="Actions\actionEditLabel.cpp" />
     <ClCompile Include="Actions\ActionExit.cpp" />
@@ -177,6 +179,7 @@
     <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionCopy.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddBattery.h" />
     <ClInclude Include="Actions\ActionAddBulb.h" />
@@ -186,6 +189,7 @@
     <ClInclude Include="Actions\ActionAddGround.h" />
     <ClInclude Include="Actions\ActionAddRes.h" />
     <ClInclude Include="Actions\ActionAddSwitch.h" />
+    <ClInclude Include="Actions\ActionCopy.h" />
     <ClInclude Include="Actions\ActionDesign.h" />
     <ClInclude Include="Actions\actionEditLabel.h" />
     <ClInclude Include="Actions\ActionExit.h" />
