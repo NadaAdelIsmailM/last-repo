@@ -9,7 +9,7 @@ Ground::Ground(GraphicsInfo* r_GfxInfo,string gname) :Component(r_GfxInfo)
 {
 	m_Label = gname;
 }
-
+//void Ground::ToSim() {}
 void Ground::Draw(UI* pUI)
 {
 	pUI->DrawGround(*m_pGfxInfo,m_Label);

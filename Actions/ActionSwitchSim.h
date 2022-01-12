@@ -8,7 +8,7 @@ class ActionSwitchSim : public Action
 public:
 	ActionSwitchSim(ApplicationManager* pApp);
 	virtual ~ActionSwitchSim(void);
-
+	
 	//Execute action (code depends on action type)
 	virtual void Execute();
 

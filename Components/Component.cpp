@@ -3,8 +3,8 @@
 Component::Component(GraphicsInfo *r_GfxInfo)
 {
 	m_pGfxInfo = r_GfxInfo;	
-	selected = false;
-	CompStatus = 0;
+	selected =false;
+	Compstate = OFF;
 	id = cid++;
 }
 void Component::setlabel(string s) {
@@ -13,11 +13,20 @@ void Component::setlabel(string s) {
 string Component::getlabel()const {
 	return m_Label;
 }
+Status Component::getCompState()const {
+	return this->Compstate;
+}
+void Component::setCompState(Status value) {
+	Compstate = value;
+}
 void Component::addTerm1Conn(Connection* c) {
 	term1_connections[term1_conn_count++] = c;
 }
 void Component::addTerm2Conn(Connection* c) {
 	term2_connections[term2_conn_count++] = c;
+}
+void Component::setResistance(int R) {
+	resistance = R;
 }
 Component::Component()
 {
@@ -25,7 +34,7 @@ Component::Component()
 	term1_volt = term2_volt = 0;
 	term1_conn_count = term2_conn_count = 0;
 	selected = false;
-	CompStatus = 0;
+	Compstate = OFF;
 }
 //void Component::resetID() {
 	//ID = 1;
@@ -70,18 +79,18 @@ int Component::getResistance() {
 void Component::setState(int S) {
 	switch (S) {
 	case 1:
-		CompStatus = false;
+		Compstate = OFF;
 		break;
 	case 0:
-		CompStatus = true;
+		Compstate = ON;
 		break;
 	default:
-		CompStatus = false;
+		Compstate = OFF;
 	}
 }
 
 bool Component::getCompState() {
-	return CompStatus;
+	return Compstate;
 }
 
 int Component::getCompCenterX(UI* pUI) {

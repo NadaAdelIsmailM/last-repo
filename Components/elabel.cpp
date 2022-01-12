@@ -29,3 +29,4 @@ void elabel::Draw(UI*){
 void elabel::Load(string label, int value)
 {
 }
+//void elabel::ToSim() {}

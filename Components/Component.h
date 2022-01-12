@@ -18,7 +18,7 @@ protected:
 	//static int ID;
 	double resistance;
 	bool selected;
-	bool CompStatus;
+	Status Compstate;
 	//Each terminal is connected to set of connections
 	Connection *term1_connections[MAX_CONNS]; //list of pointers to connections
 	Connection *term2_connections[MAX_CONNS];
@@ -34,6 +34,7 @@ protected:
 
 
 public:
+	void setResistance(int R);
 	Component(GraphicsInfo *r_GfxInfo);
 	//void setTerm1Volt(double v);		//sets the voltage at terminal1
 	//void setTerm2Volt(double v);		//sets the voltage at terminal2
@@ -59,12 +60,15 @@ public:
 	void setlabel(string s);
 	string getlabel() const;
 	int gitid();
+	Status getCompState()const;
+	void setCompState(Status value);
 	//virtual int GetOutPinStatus()=0;	//returns status of outputpin if LED, return -1
 	//virtual int GetInputPinStatus(int n)=0;	//returns status of Inputpin # n if SWITCH, return -1
 
 	//virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 	virtual void savecommponnent(fstream& file)=0;
 	virtual void Load(string label,int value)=0;
+	//virtual void ToSim() = 0;
 	Component();	
 	
 	//Destructor must be virtual

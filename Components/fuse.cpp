@@ -9,7 +9,7 @@ fuse::fuse(GraphicsInfo* r_GfxInfo,string k) :Component(r_GfxInfo)
 {
 	m_Label = k;
 }
-
+//void fuse::ToSim() {}
 void fuse::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.

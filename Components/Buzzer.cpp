@@ -9,7 +9,7 @@ Buzzer::Buzzer(GraphicsInfo* r_GfxInfo,string s):Component(r_GfxInfo)
 {
 	m_Label = s;
 }
-
+//void Buzzer::ToSim() {}
 void Buzzer::Draw(UI* pUI)
 {
 	pUI->DrawBuzzer(*m_pGfxInfo,m_Label, selected);

@@ -42,6 +42,15 @@ void ActionAddSwitch::Execute()
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 
 	Switch* pR = new Switch(pGInfo,sname);
+	pUI->PrintMsg("Enter state of switch, 0=closed& 1=opened");
+	string value = pUI->GetString();
+	if (value != "1" && value != "0")
+		value = "1";
+	pR->setState(stod(value));
+
+
+ 
+	pUI->ClearStatusBar();
 	pManager->AddComponent(pR);
 }
 

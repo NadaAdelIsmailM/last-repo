@@ -197,6 +197,12 @@
     <ClCompile Include="Components\elabel.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Module3.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AddModule.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -330,6 +336,12 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Components\elabel.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AddModule.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Module3.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

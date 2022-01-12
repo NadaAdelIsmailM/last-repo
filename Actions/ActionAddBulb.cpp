@@ -11,8 +11,8 @@ ActionAddBulb::~ActionAddBulb(void)
 
 void ActionAddBulb::Execute()
 {
-	bool addIsOn;
-	string addIsOnS;
+	//Status Compstate;
+	//string Compstates;
 	UI* pUI = pManager->GetUI();
 
 
@@ -35,22 +35,22 @@ void ActionAddBulb::Execute()
 	pGInfo->PointsList[1].x = Cx + compWidth / 2;
 	pGInfo->PointsList[1].y = Cy + compHeight / 2;
 	pUI->PrintMsg("Is the bulb on or off? <y/n>");
-	addIsOnS=pUI->GetString();
-	while ((addIsOnS != "y") && (addIsOnS != "n")) 
+	Compstates =pUI->GetString();
+	while ((Compstates != "y") && (Compstates != "n"))
 	{pUI->PrintMsg("Error!!! Enter 'y' for yes and 'n' for no.");
-	addIsOnS = pUI->GetString();
+	Compstates = pUI->GetString();
 	};
-	if (addIsOnS == "y")
+	if (Compstates == "y")
 	{
-		addIsOn = true;
+		Compstate = ON;
 		pUI->PrintMsg("Creating an on bulb");
 	}
 	else
 	{
-		addIsOn = false;
+		Compstates = OFF;
 		pUI->PrintMsg("Creating an off bulb");
 	}
-	Bulb* pR = new Bulb(pGInfo,bname);
+	Bulb* pR = new Bulb(pGInfo, bname, Compstate);
 	pManager->AddComponent(pR);
 }
 
@@ -60,3 +60,9 @@ void ActionAddBulb::Undo()
 void ActionAddBulb::Redo()
 {}
 
+void ActionAddBulb::ToSim() {
+	//UI* pUI;
+	//if (Compstate == ON) {
+	//pUI->DrawBulb()
+	
+}

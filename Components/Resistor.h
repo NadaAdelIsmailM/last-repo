@@ -13,4 +13,5 @@ public:
 	virtual void Draw(UI*);	//Draws the resistor
 	virtual void Load(string label, int value);
 	void  Resistor::savecommponnent(fstream& file);
+	//virtual void ToSim();
 };

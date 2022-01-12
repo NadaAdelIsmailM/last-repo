@@ -31,7 +31,7 @@ enum ActionType
 	editlabel,
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
-
+	MODULE3,
 	DESIGGN,
 
 	DSN_MODE,	//Switch to Design mode
@@ -65,7 +65,7 @@ enum COMPSS
 	SWITCH,
 	BATTERY,
 	GROUND,
-	MODULE_1,
+	MODULE_3,
 };
 //Maximum number of connections that can be connected to any output components
 #define MAX_CONNS 200

@@ -12,16 +12,18 @@ ActionSwitchSim::~ActionSwitchSim(void)
 
 void ActionSwitchSim::Execute()
 {
-	/*
+
 	if (pManager->ValidateCircuit())
 	{
 		UI* pUI = pManager->GetUI();
 		//pUI->ClearToolBarArea();
 		pUI->CreateSimulationToolBar();
-	*/	
-		
+
+		pManager->ToSim();
+		//pUI->CreateSimulationToolBar();
+		//pUI->CreateSimulationMode(bool sele);
+	}
 }
-	
 void ActionSwitchSim::Undo()
 {}
 

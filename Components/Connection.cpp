@@ -10,6 +10,7 @@ Connection::Connection(GraphicsInfo *r_GfxInfo,string f, Component *cmp1, Compon
 	Cmpnt2 = cmp2;
 	c_label;
 }
+//void Connection::ToSim() {}
 Connection::Connection(GraphicsInfo* r_GfxInfo)
 {
 	pGfxInfo = r_GfxInfo;

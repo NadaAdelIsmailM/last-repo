@@ -9,7 +9,7 @@ Battery::Battery(GraphicsInfo* r_GfxInfo,string bname) :Component(r_GfxInfo)
 {
 	m_Label = bname;
 }
-
+//void Battery::ToSim() {}
 void Battery::Draw(UI* pUI)
 {
 	//Call output class and pass resistor drawing info to it.

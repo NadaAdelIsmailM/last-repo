@@ -22,4 +22,5 @@ public:
 	void Select();
 	void unSelect();
 	void saveconnection(fstream& file);
+	//virtual void ToSim();
 };

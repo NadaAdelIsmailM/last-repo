@@ -10,8 +10,8 @@ ActionSwitchActual::~ActionSwitchActual(void)
 }
 void ActionSwitchActual::Execute()
 {
-	UI* pUI = pManager->GetUI();
-	pUI->SwitchImageType();
+	//UI* pUI = pManager->GetUI();
+	//pUI->SwitchImageType();
 
 
 }

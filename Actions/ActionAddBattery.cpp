@@ -54,3 +54,4 @@ void ActionAddBattery::Undo()
 
 void ActionAddBattery::Redo()
 {}
+//void ToSim(){}

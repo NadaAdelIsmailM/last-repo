@@ -49,6 +49,7 @@ class UI
 		ITM_LOAD,
 		ITM_SIM,
 		ITM_editlabel,
+		ITM_MODULE,
 
 		ITM_SAVE,
 		ITM_EXIT,		//Exit item
@@ -58,7 +59,7 @@ class UI
 	
 	};
 
-
+	bool switchisopened;
 	enum SimMenuItem //The items of the simulation menu (you should add more items)
 	{
 		//Note: Items are ordered here as they appear in menu
@@ -103,7 +104,7 @@ public:
 	UI();
 	int getCompWidth() const;	//returns Component width
 	int getCompHeight() const;	//returns Component height
-	
+	bool IsSimulation;
 	
 	// Input Functions  ---------------------------
 	void GetPointClicked(int &, int &);	//Get coordinate where user clicks
@@ -123,23 +124,28 @@ public:
 
 	void ClearStatusBar() const;		//Clears the status bar
 	void ClearDrawingArea() const;	//Clears the drawing area
-	void SwitchImageType();
-
+	void SwitchImageType(bool selected);
+	
 		
 	// Draws a resistor
 	void DrawResistor(const GraphicsInfo &r_GfxInfo,string b, bool selected = false) const;
 	void DrawBuzzer(const GraphicsInfo& r_GfxInfo, string b, bool selected = false) const;
-	void DrawBulb(const GraphicsInfo& r_GfxInfo, string b, bool selected = false,bool IsOn=true) const;
+	void DrawBulb(const GraphicsInfo& r_GfxInfo, string b, bool selected = false,Status IsOn=ON) const;
 	void DrawBattery(const GraphicsInfo& r_GfxInfo, string b, bool selected=false) const;
 	void DrawGround(const GraphicsInfo& r_GfxInfo, string b, bool selected=false) const;
-	void DrawSwitch(const GraphicsInfo& r_GfxInfo, string b, bool selected=false) const;
+	void DrawOpenedSwitch(const GraphicsInfo& r_GfxInfo, string b, bool selected=false) const;
+	void DrawClosedSwitch(const GraphicsInfo& r_GfxInfo, string b, bool selected = false) const;
+	//void CreateSimulationMode(bool selected);
 	void DrawFuse(const GraphicsInfo& r_GfxInfo, string b, bool selected=false) const;
 	///TODO: Make similar functions for drawing all other components, connections, .. etc
-
+	void DrawModule(const GraphicsInfo& r_GfxInfo, string b, bool selected = false) const;
+	//void DrawModule(const GraphicsInfo& r_GfxInfo, string b, bool selected) const
 	// Draws Connection
 	void DrawConnection(const GraphicsInfo &r_GfxInfo, string b, bool selected = false) const;
 	
-	void PrintMsg(string msg) const;	//Print a message on Status bar
+	void PrintMsg(string msg) const;
+	//Print a message on Status bar
+	void labelMsg(string msg, int x = 25, int y = height - StatusBarHeight + 10);
 	~UI();
 };
 

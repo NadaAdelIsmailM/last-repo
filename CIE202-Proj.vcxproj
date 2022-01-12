@@ -127,6 +127,7 @@
     <ClCompile Include="Actions\ActionSwitchActual.cpp" />
     <ClCompile Include="Actions\ActionSwitchSim.cpp" />
     <ClCompile Include="Actions\Load.cpp" />
+    <ClCompile Include="AddModule.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="Components\Resistor.cpp" />
     <ClCompile Include="Components\Switch.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Module3.cpp" />
     <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +196,7 @@
     <ClInclude Include="Actions\ActionSwitchActual.h" />
     <ClInclude Include="Actions\ActionSwitchSim.h" />
     <ClInclude Include="Actions\Load.h" />
+    <ClInclude Include="AddModule.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -225,6 +228,7 @@
     <ClInclude Include="Components\Resistor.h" />
     <ClInclude Include="Components\Switch.h" />
     <ClInclude Include="Defs.H" />
+    <ClInclude Include="Module3.h" />
     <ClInclude Include="UI\UI.h" />
   </ItemGroup>
   <ItemGroup>

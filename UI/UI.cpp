@@ -111,6 +111,7 @@ ActionType UI::GetUserAction() const
 			case ITM_FUSE:	return ADD_FUSE;
 			case ITM_CONNEC:	return ADD_CONNECTION;
 			case ITM_LOAD:       return LOAD;
+			case ITM_MODULE: return MODULE3;
 			case ITM_editlabel:	return editlabel;
 			case ITM_SIM: return SIM_MODE;
 			case ITM_SAVE:	return SAVE;
@@ -201,7 +202,7 @@ void UI::ClearDrawingArea() const
 	
 }
 
-void UI::SwitchImageType() {
+void UI::SwitchImageType(bool selected) {
 	if (img == Actual)
 		img = SIM;
 	else
@@ -230,6 +231,7 @@ void UI::CreateDesignToolBar()
 	MenuItemImages[ITM_SIM] = "Images\\Menu\\Menu_Simm.jpg";
 	MenuItemImages[ITM_SAVE] = "Images\\Menu\\Menu_save.jpg";
 	MenuItemImages[ITM_editlabel] = "Images\\Menu\\Menu_editlabel.jpg";
+	MenuItemImages[ITM_MODULE] = "Images\\comp\\module3.jpg";
 		//TODO: Prepare image for each menu item and add it to the list
 
 	//Draw menu item one image at a time
@@ -254,6 +256,8 @@ void UI::CreateSimulationToolBar()
 	SimulationMenuImages[ITM_DESIGN] = "images\\Sim Menu\\Menu_Design.jpg";
 	SimulationMenuImages[ITM_EXITTWO] = "images\\Sim Menu\\Menu_Exit.jpg";
 
+	
+	
 	for (int i = 0; i < ITM_SIM_CNT; i++)
 	{
 		pWind->DrawImage(SimulationMenuImages[i], i * ToolItemWidth, 0, ToolItemWidth, ToolBarHeight);
@@ -264,6 +268,22 @@ void UI::CreateSimulationToolBar()
 
 
 }
+/*void UI::CreateSimulationMode() {
+	
+		if (switchisopened) {
+			pUI->DrawBulb(*m_pGfxInfo, m_Label, selected)
+			if (selected) {
+				pUI->DrawOpenedSwitch(*m_pGfxInfo, m_Label, selected);
+		}
+			else { DrawOpenedSwitch; DrawBulb; }
+	}
+}*/
+
+
+
+
+	
+
 
 //======================================================================================//
 //								Components Drawing Functions							//
@@ -299,20 +319,40 @@ void UI::DrawBuzzer(const GraphicsInfo& r_GfxInfo, string b, bool selected) cons
 
 }
 //TODO: Add similar functions to draw all other components
-void UI::DrawBulb(const GraphicsInfo& r_GfxInfo, string b, bool selected, bool IsOn) const
+void UI::DrawBulb(const GraphicsInfo& r_GfxInfo, string b, bool selected, Status Compstate) const
 {
-	string BuzzImage;
-	if (selected && IsOn)
-		BuzzImage = "Images\\Comp\\Bulb_ON_HI.jpg";
-	else if (selected && (!IsOn))
-		BuzzImage = "Images\\Comp\\Bulb_OFF_HI.jpg";
-	else if ((!selected) && IsOn)
-		BuzzImage = "Images\\Comp\\Bulb_ON.jpg";
-	else if ((!selected) && (!IsOn))
-		BuzzImage = "Images\\Comp\\Bulb_OFF.jpg";
+	string BulbImage;
+	if (selected && Compstate == ON && IsSimulation) {
+		if (switchisopened) { BulbImage = "Images\\Comp\\Bulb_OFF_HI.jpg"; }
+		else
+		{BulbImage = "Images\\Comp\\Bulb_ON_HI.jpg";
+	}
+	}
+	else if (selected && (Compstate == OFF && IsSimulation)){
+		BulbImage = "Images\\Comp\\Bulb_OFF_HI.jpg";
+}
+	else if ((!selected) && Compstate == ON && IsSimulation) {
+		if (switchisopened) { BulbImage = "Images\\Comp\\Bulb_OFF.jpg"; }
+		else{
+			BulbImage = "Images\\Comp\\Bulb_ON.jpg";
+	}}
+	else if ((!selected) && (Compstate == OFF) && IsSimulation==false){
+		BulbImage = "Images\\Comp\\Bulb_OFF.jpg";
+}
+	if (selected && Compstate == ON && IsSimulation == false) {
+		BulbImage = "Images\\Comp\\Bulb_ON_HI.jpg";
+	}
+	else if (selected && (Compstate == OFF && IsSimulation == false)){
+		BulbImage = "Images\\Comp\\Bulb_OFF_HI.jpg";
+}
+	else if ((!selected) && Compstate == ON) {
+		BulbImage = "Images\\Comp\\Bulb_ON.jpg";
+	}
+	else if ((!selected) && (Compstate == OFF) && IsSimulation == false) {
+		BulbImage = "Images\\Comp\\Bulb_OFF.jpg";
+	}
 
-
-	pWind->DrawImage(BuzzImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	pWind->DrawImage(BulbImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 	pWind->SetPen(BLUE);
 	pWind->DrawString(r_GfxInfo.PointsList[0].x + (COMP_WIDTH / 4) - 30, (r_GfxInfo.PointsList[0].y), b);
 }
@@ -362,20 +402,35 @@ void UI::DrawGround(const GraphicsInfo& r_GfxInfo, string g, bool selected) cons
 	pWind->DrawString(r_GfxInfo.PointsList[0].x + (COMP_WIDTH / 4) - 30, (r_GfxInfo.PointsList[0].y), g);
 }
 
-void UI::DrawSwitch(const GraphicsInfo& r_GfxInfo, string b, bool selected) const
+void UI::DrawOpenedSwitch(const GraphicsInfo& r_GfxInfo, string b, bool selected) const
 {
 	string SwitchImage;
-	if (selected)
-		SwitchImage = "Images\\comp\\Switchclosed.jpg";	//use image of closed switch
-	else
+	if (selected&& IsSimulation==false)
+		SwitchImage = "Images\\comp\\Switchopenedcolored.jpg";	//use image of closed switch
+	else if (!selected )
 		SwitchImage = "Images\\comp\\switchopen.jpg";	//use image of the open switch
-
+	else if (selected && IsSimulation ==true)
+		SwitchImage = "Images\\comp\\switchclosed.jpg";
 	pWind->DrawImage(SwitchImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 	pWind->SetPen(BLUE);
 	pWind->DrawString(r_GfxInfo.PointsList[0].x + (COMP_WIDTH / 4) - 30, (r_GfxInfo.PointsList[0].y), b);
+    bool switchisopened = true;
 }
 
-
+void UI::DrawClosedSwitch(const GraphicsInfo& r_GfxInfo, string b, bool selected) const
+{
+	string SwitchImage;
+	if (selected && IsSimulation == false)
+		SwitchImage = "Images\\comp\\Switchclosedcolored.jpg";	//use image of closed switch
+	else if (!selected)
+		SwitchImage = "Images\\comp\\switchclosed.jpg";	//use image of the open switch
+	else if (selected && IsSimulation == true)
+		SwitchImage = "Images\\comp\\switchopen.jpg";
+	pWind->DrawImage(SwitchImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	pWind->SetPen(BLUE);
+	pWind->DrawString(r_GfxInfo.PointsList[0].x + (COMP_WIDTH / 4) - 30, (r_GfxInfo.PointsList[0].y), b);
+	bool switchisopened = false;
+}
 void UI::DrawFuse(const GraphicsInfo& r_GfxInfo, string f, bool selected) const
 {
 	string FuseImage;
@@ -390,7 +445,28 @@ void UI::DrawFuse(const GraphicsInfo& r_GfxInfo, string f, bool selected) const
 	pWind->DrawString(r_GfxInfo.PointsList[0].x + (COMP_WIDTH / 4) - 30, (r_GfxInfo.PointsList[0].y), f);
 }
 
+void UI::labelMsg(string msg, int x, int y)
+{
+	ClearStatusBar();
 
+	int MsgX = x;
+	int MsgY = y;
+
+	// Print the Message
+	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Gunplay");
+	pWind->SetPen(MsgColor);
+	pWind->DrawString(MsgX, MsgY, msg);
+}
+void UI::DrawModule(const GraphicsInfo& r_GfxInfo, string b, bool selected ) const {
+	string ModuleImage;
+	if (selected)
+		ModuleImage = "Images\\comp\\module3-HI.jpg";
+	else
+		ModuleImage = "Images\\comp\\module3.jpg";
+	pWind->DrawImage(ModuleImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	//pWind->SetPen(BLUE);
+	//pWind->DrawString(r_GfxInfo.PointsList[0].x + (COMP_WIDTH / 4) - 30, (r_GfxInfo.PointsList[0].y), msg);
+}
 
 UI::~UI()
 {

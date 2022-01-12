@@ -25,7 +25,7 @@ private:
 
 
 public:	
-
+	bool ValidateCircuit();
 	ApplicationManager(); //constructor
 
 	//Reads the required action from the user and returns the corresponding action type
@@ -40,7 +40,7 @@ public:
 
 	//Gets a pointer to UI Object
 	UI* GetUI();
-	
+	void Changestate();
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
@@ -51,7 +51,7 @@ public:
 	void Load2(ifstream &my_file, string fo_name);
 	Component* GetComponentByCoordinates(int x, int y);
 	Connection* GetConnByCoordinates(int x, int y);
-	void ToSimulation();
+	void ToSim();
 	void savefilrconnection(fstream& file);
 	//destructor
 	~ApplicationManager();

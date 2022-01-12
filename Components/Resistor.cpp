@@ -5,7 +5,7 @@
 Resistor::Resistor() {
 	
 }
-
+//void Resistor::ToSim() {}
 Resistor::Resistor(GraphicsInfo* r_GfxInfo)
 {
 }

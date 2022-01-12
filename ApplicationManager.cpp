@@ -15,7 +15,7 @@
 #include "Actions/ActionSwitchSim.h"
 #include "Actions/ActionDesign.h"
 #include "Actions/ActionSave.h"
-
+#include"Actions/AddModule.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -39,7 +39,15 @@ void ApplicationManager::AddConnection(Connection* pConn)
 	ConnList[ConnCount++] = pConn;
 }
 
-
+bool ApplicationManager::ValidateCircuit() {
+	int counter=0;
+	for (int i = 0; i < CompCount; i++) {
+		if (dynamic_cast<Ground*>(CompList[i]))
+			counter++;
+	}
+	if (counter != 1)
+		return false;
+}
 //////////////////
 void ApplicationManager::UnselectAll(Component* pComp) {
 	for (int i = 0; i < CompCount; i++) {
@@ -101,6 +109,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case LOAD:
 			pAct = new Load(this);
+			break;
+		case MODULE3:
+			pAct = new AddModule(this);
 			break;
 		case SELECT:
 			pAct = new ActionSelect(this);
@@ -261,9 +272,14 @@ bool ApplicationManager::ValidConnectionPoint(int x, int y, const Component* c1)
 	
 }
 
-void ApplicationManager::ToSimulation() {
+void ApplicationManager::ToSim() {
+	if (!ValidateCircuit()) {
+		// TODO
+	}
+	else {
 		this->IsSimulation = true;
 		// Compute all needed voltages and current
+	}
 }
 
 void ApplicationManager::Load2(ifstream& my_file, string fo_name) {
@@ -335,6 +351,7 @@ void ApplicationManager::Load2(ifstream& my_file, string fo_name) {
 				comp->Load(label, value);
 				AddComponent(comp);
 			}
+			
 		}
 		int num2;
 		my_file >> cmpname;
@@ -367,6 +384,5 @@ void ApplicationManager::Load2(ifstream& my_file, string fo_name) {
 	}
 
 }
-
 
 	

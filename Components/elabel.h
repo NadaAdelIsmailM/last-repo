@@ -10,5 +10,5 @@ public:
 	virtual void savecommponnent(fstream& file);
 	virtual void Draw(UI*);
 	virtual void Load(string label, int value);
-
+	//virtual void ToSim();
 };
