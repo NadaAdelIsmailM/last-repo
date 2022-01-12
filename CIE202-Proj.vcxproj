@@ -40,7 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -111,7 +111,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ActionCopy.cpp" />
     <ClCompile Include="Actions\AcrionAddGround.cpp" />
     <ClCompile Include="Actions\ActionAddBattery.cpp" />
     <ClCompile Include="Actions\ActionAddBulb.cpp" />
@@ -120,7 +119,7 @@
     <ClCompile Include="Actions\ActionAddfuse.cpp" />
     <ClCompile Include="Actions\ActionAddRes.cpp" />
     <ClCompile Include="Actions\ActionAddSwitch.cpp" />
-    <ClCompile Include="Actions\ActionCopy.cpp" />
+    <ClCompile Include="Actions\ActionAmmeter.cpp" />
     <ClCompile Include="Actions\ActionDesign.cpp" />
     <ClCompile Include="Actions\actionEditLabel.cpp" />
     <ClCompile Include="Actions\ActionExit.cpp" />
@@ -128,6 +127,7 @@
     <ClCompile Include="Actions\ActionSelect.cpp" />
     <ClCompile Include="Actions\ActionSwitchActual.cpp" />
     <ClCompile Include="Actions\ActionSwitchSim.cpp" />
+    <ClCompile Include="Actions\ActionVoltmeter.cpp" />
     <ClCompile Include="Actions\Load.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -179,7 +179,6 @@
     <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ActionCopy.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\ActionAddBattery.h" />
     <ClInclude Include="Actions\ActionAddBulb.h" />
@@ -189,7 +188,7 @@
     <ClInclude Include="Actions\ActionAddGround.h" />
     <ClInclude Include="Actions\ActionAddRes.h" />
     <ClInclude Include="Actions\ActionAddSwitch.h" />
-    <ClInclude Include="Actions\ActionCopy.h" />
+    <ClInclude Include="Actions\ActionAmmeter.h" />
     <ClInclude Include="Actions\ActionDesign.h" />
     <ClInclude Include="Actions\actionEditLabel.h" />
     <ClInclude Include="Actions\ActionExit.h" />
@@ -197,6 +196,7 @@
     <ClInclude Include="Actions\ActionSelect.h" />
     <ClInclude Include="Actions\ActionSwitchActual.h" />
     <ClInclude Include="Actions\ActionSwitchSim.h" />
+    <ClInclude Include="Actions\ActionVoltmeter.h" />
     <ClInclude Include="Actions\Load.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />

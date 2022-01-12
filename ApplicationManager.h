@@ -12,7 +12,8 @@
 class ApplicationManager
 {
 
-	enum { MaxCompCount = 200};	//Max no of Components	
+	enum { MaxCompCount = 200
+	};	//Max no of Components	
 
 private:
 	bool IsSimulation;
@@ -41,21 +42,22 @@ public:
 	//Gets a pointer to UI Object
 	UI* GetUI();
 	
-	Component* copycomp;
+	double getNetResistance();
+	double getNetVoltage();
+	void getTermVoltage();
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 	void AddConnection(Connection* pConn);
-	void UnselectAll(Component* pComp);//this function is not used, it was used to unselect all object except the passed object(pComp) which leaves it as it is.
-	void UnselectAll(Connection* pConn);
+	void UnselectAll();
 	bool ValidConnectionPoint(int x, int y,const Component* c1);
 	void Load2(ifstream &my_file, string fo_name);
 	Component* GetComponentByCoordinates(int x, int y);
 	Connection* GetConnByCoordinates(int x, int y);
 	void ToSimulation();
+	double CalculateCurrent();
+	void CalculateVolt(double current);
 	void savefilrconnection(fstream& file);
-	Component* ApplicationManager::getcopycomponent();
 	//destructor
-	void setcopycomponent(Component* clicked);
 	~ApplicationManager();
 };
 

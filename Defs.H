@@ -2,6 +2,8 @@
 #define CONST_H
 
 //This header file contains some defenitions to be used all over the application
+//Terminals
+
 enum TerminalNum { Term1, Term2 };
 enum Status { ON, OFF };
 //All possible actions

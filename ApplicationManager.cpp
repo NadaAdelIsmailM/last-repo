@@ -15,7 +15,6 @@
 #include "Actions/ActionSwitchSim.h"
 #include "Actions/ActionDesign.h"
 #include "Actions/ActionSave.h"
-#include "components/Resistor.h"
 
 
 ApplicationManager::ApplicationManager()
@@ -29,7 +28,90 @@ ApplicationManager::ApplicationManager()
 		ConnList[i] = nullptr;
 	//Creates the UI Object & Initialize the UI
 	pUI = new UI;
+}
 
+//////
+// 
+double ApplicationManager::getNetResistance() {
+	double NetR = 0;
+	for (int i = 0; i < CompCount; i++) {
+		NetR += CompList[i]->getResistance();
+	}
+	return NetR;
+}
+double ApplicationManager::getNetVoltage() {
+	double NetV = 0;
+	for (int i = 0; i < CompCount; i++) {
+		NetV += CompList[i]->getSourceVoltage();
+	}
+	return NetV;
+}
+void ApplicationManager::getTermVoltage() {
+	double remainingVoltage = getNetVoltage();
+	double AllVoltage = getNetVoltage();
+	double current;
+	Component* comp1 = nullptr, * ground = nullptr;
+	Connection* conn1;
+	int temp;
+	for (int i = 0; i < CompCount; i++) {
+		if (dynamic_cast<Ground*>(CompList[i])) {
+			comp1 = CompList[i];
+
+		}
+	}
+	ground = comp1;
+	current = getNetVoltage() / getNetResistance();
+	conn1 = comp1->getTermConn(Term1)[0];
+	temp = conn1->WhatComp(comp1);
+	switch (temp) {
+	case 1:
+		comp1 = conn1->getComp(2);
+		break;
+	case 2:
+		comp1 = conn1->getComp(1);
+	}
+	switch (comp1->WhatTerminal(conn1)) {
+	case Term1:
+		comp1->setTermi1Volt(0);
+		comp1->setTermi2Volt(comp1->getResistance() * current);
+		break;
+	case Term2:
+		comp1->setTermi2Volt(0);
+		comp1->setTermi1Volt(comp1->getResistance() * current);
+		break;
+	}
+	pUI->GetString(to_string(comp1->getResistance() * current + AllVoltage - remainingVoltage));
+	remainingVoltage -= comp1->getResistance() * current;
+	while (comp1 != ground) {
+
+		if (conn1 == comp1->getTermConn(Term1)[0])
+			conn1 = comp1->getTermConn(Term2)[0];
+		else {
+			conn1 = comp1->getTermConn(Term1)[0];
+
+		}
+		temp = conn1->WhatComp(comp1);
+		switch (temp) {
+		case 1:
+			comp1 = conn1->getComp(2);
+			break;
+		case 2:
+			comp1 = conn1->getComp(1);
+		}
+		switch (comp1->WhatTerminal(conn1)) {
+		case Term1:
+			comp1->setTermi1Volt(AllVoltage - remainingVoltage);
+			comp1->setTermi2Volt(comp1->getResistance() * current + AllVoltage - remainingVoltage);
+			break;
+		case Term2:
+			comp1->setTermi2Volt(AllVoltage - remainingVoltage);
+			comp1->setTermi1Volt(comp1->getResistance() * current + AllVoltage - remainingVoltage);
+			break;
+		}
+		pUI->GetString(to_string(comp1->getResistance() * current + AllVoltage - remainingVoltage));
+		remainingVoltage -= comp1->getResistance() * current;
+
+	}
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
@@ -43,26 +125,14 @@ void ApplicationManager::AddConnection(Connection* pConn)
 
 
 //////////////////
-void ApplicationManager::UnselectAll(Component* pComp) {
+void ApplicationManager::UnselectAll() {
 	for (int i = 0; i < CompCount; i++) {
-		if (CompList[i] != pComp && CompList[i] != nullptr)
 			CompList[i]->unSelect();
 	}
 	for (int i = 0; i < ConnCount; i++)
-		if (ConnList[i] != nullptr)
 			ConnList[i]->unSelect();
 }
-void ApplicationManager::UnselectAll(Connection* pConn) {
 
-	for (int i = 0; i < CompCount; i++)
-		if (CompList[i] != nullptr)
-			CompList[i]->unSelect();
-	for (int i = 0; i < ConnCount; i++) {
-		if (ConnList[i] != nullptr && ConnList[i] != pConn)
-			ConnList[i]->unSelect();
-
-	}
-}
 ////////////////////////////////////////////////////////////////////
 
 ActionType ApplicationManager::GetUserAction()
@@ -262,11 +332,32 @@ bool ApplicationManager::ValidConnectionPoint(int x, int y, const Component* c1)
 	
 	
 }
-
+/*
 void ApplicationManager::ToSimulation() {
+	if (!ValidateCircuit()) {
+		// TODO
+	}
+	else {
 		this->IsSimulation = true;
 		// Compute all needed voltages and current
+		double current = CalculateCurrent();
+		CalculateVolt(current);
+	}
+}*/
+////////////////////////////////////////////////////////////////////
+// Calculates current passing through the circuit
+double ApplicationManager::CalculateCurrent() {
+	// TODO
+	return getNetVoltage() / getNetResistance();
 }
+
+// Calculates voltage at each component terminal
+void ApplicationManager::CalculateVolt(double current) {
+	// TODO
+}
+
+
+
 
 void ApplicationManager::Load2(ifstream& my_file, string fo_name) {
 	GraphicsInfo* G = new GraphicsInfo(2);
@@ -368,16 +459,6 @@ void ApplicationManager::Load2(ifstream& my_file, string fo_name) {
 
 	}
 
-}
-
-void ApplicationManager::setcopycomponent(Component*clicked) {
-	copycomp = clicked->copy();
-
-}
-
-
-Component* ApplicationManager::getcopycomponent() {
-	return copycomp->copy();
 }
 
 
