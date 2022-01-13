@@ -79,7 +79,6 @@ public:
 	void DeleteComp();
 	void DeleteConn();
 	//destructor
-
 	~ApplicationManager();
 };
 

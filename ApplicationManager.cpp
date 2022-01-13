@@ -591,18 +591,6 @@ void ApplicationManager::Load2(ifstream& my_file, string fo_name) {
 	}
 
 }
-
-
-	
-void ApplicationManager::setcopycomponent(Component* clicked) {
-	copycomp = clicked->copy();
-
-}
-
-
-Component* ApplicationManager::getcopycomponent() {
-	return copycomp->copy();
-}
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::ToSimulation() {
 	if (!ValidateCircuit()) {

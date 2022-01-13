@@ -23,7 +23,8 @@ UI::UI()
 	CreateDesignToolBar();	//Create the desgin toolbar
 	//CreateSimulationToolBar();
 	CreateStatusBar();		//Create Status bar
-	
+	xnew = 0;
+	ynew = 0;
 }
 
 int UI::getToolBarHeight() {
@@ -72,24 +73,24 @@ string UI::GetString(string msg,string value)
 	{
 		pWind->WaitKeyPress(Key);
 
-		switch (Key)
+		switch(Key)
 		{
 		case 27: //ESCAPE key is pressed
 			PrintMsg("");
 			return ""; //returns nothing as user has cancelled the input
-
+		
 		case 13:		//ENTER key is pressed
 			return userInput;
-
+		
 		case 8:		//BackSpace is pressed
-			if (userInput.size() > 0)
-				userInput.resize(userInput.size() - 1);
+			if(userInput.size() > 0)
+				userInput.resize(userInput.size() -1 );
 			break;
-
+		
 		default:
-			userInput += Key;
+			userInput+= Key;
 		};
-
+		
 		PrintMsg(userInput);
 	}
 

@@ -1,14 +1,16 @@
-#pragma once
+#ifndef FUZE_H
+#define FUZE_H
 #include "Component.h"
 
-class fuse :public Component
+class Fuse :public Component
 {
 public:
-	fuse(GraphicsInfo* r_GfxInfo);
-	fuse(GraphicsInfo* r_GfxInfo,string k);
-	virtual void Operate();	//Calculates the volt on both terminals
+	Fuse(GraphicsInfo* r_GfxInfo);
+	
 	virtual void Draw(UI*);	//Draws the resistor
-	virtual void Load(string label, int value);
-	virtual void  fuse::savecommponnent(fstream& file);
-	virtual fuse* copy();
+	virtual void Operate();
+	virtual void Load2(int Value, string);
+	virtual void SaveCircuit(ofstream& CircuitFile);
+	virtual ALLCOMPS whichComponent();
 };
+#endif

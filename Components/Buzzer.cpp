@@ -38,10 +38,3 @@ void Buzzer::Load2(int Value, string Label) {
 ALLCOMPS Buzzer::whichComponent() {
 	return BUZZER;
 }
-
-Buzzer* Buzzer::copy()
-{
-	Buzzer* PPr = new Buzzer(m_pGfxInfo, m_Label);
-
-	return PPr;
-}

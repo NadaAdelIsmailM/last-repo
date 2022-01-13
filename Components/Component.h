@@ -12,8 +12,6 @@ private:
 	string m_Label;
 	
 protected:
-	string m_Label;
-
 	static int ID;
 	//int MaxFuzeCurrent = 0;
 	Status CompStatus;
@@ -87,9 +85,7 @@ public:
 
 	//bool isInRegion(int x, int y, UI* pUI); // whether this point lies inside the component
 	TerminalNum WhatTerminal(Connection* Conn); // returns the terminal to which a connection is connected
-	virtual Component* copy() = 0;
-	Component();	
-	
+
 	//Destructor must be virtual
 	virtual ~Component();
 };

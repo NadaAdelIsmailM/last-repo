@@ -1,39 +1,44 @@
-#include "fuse.h"
-#include <iostream>
-#include <string>
-#include <fstream>
-fuse::fuse(GraphicsInfo* r_GfxInfo)
+#include "Fuse.h"
+#include "..\Actions\Action.h"
+#include <stdlib.h>
+#include "..\ApplicationManager.h"
+#include "..\UI\UI.h"
+Fuse::Fuse(GraphicsInfo* r_GfxInfo) :Component(r_GfxInfo)
 {
+	resistance = 2;
+	sourceVoltage = 0;
 }
-fuse::fuse(GraphicsInfo* r_GfxInfo,string k) :Component(r_GfxInfo)
+
+void Fuse::Draw(UI* pUI)
 {
-	m_Label = k;
-}
+	int xlabel = m_pGfxInfo->PointsList[0].x;
+	int ylabel = m_pGfxInfo->PointsList[0].y + 50;
 
-void fuse::Draw(UI* pUI)
+	pUI->labelMsg(getlabel(), xlabel, ylabel);
+	pUI->DrawFuse(*m_pGfxInfo, selected);
+
+
+
+
+}
+void Fuse::SaveCircuit(ofstream& CircuitFile)
 {
-	//Call output class and pass resistor drawing info to it.
-	pUI->DrawFuse(*m_pGfxInfo,m_Label, selected); //update to draw resistor
-
+	string s = getlabel();
+	if (getlabel() == "")
+		setlabel("Fuse");
+	CircuitFile << "FUs" << "\t" << ID << "\t" << getLabel() << "\t" << getResistance() << "\t" << m_pGfxInfo->PointsList[0].x
+		<< "\t" << m_pGfxInfo->PointsList[0].y << endl;
+	ID++;
+	setlabel(s);
 }
-
-void fuse::Operate()
+void Fuse::Operate()
 {
 
 }
-void fuse::Load(string label, int value) {
-	resistance = value;
-	setlabel(label);
+void Fuse::Load2(int Value, string Label) {
+	resistance = Value;
+	setlabel(Label);
 }
-
-void  fuse::savecommponnent(fstream& file) {
-
-	file << "fuse \t" << to_string(id) << "\t" << m_Label << "\t" << to_string(m_pGfxInfo->PointsList[0].x) << "\t" << to_string(m_pGfxInfo->PointsList[0].y);
-}
-
-fuse* fuse::copy()
-{
-	fuse* PPr = new fuse(m_pGfxInfo, m_Label);
-
-	return PPr;
+ALLCOMPS Fuse::whichComponent() {
+	return 	FUSE;
 }
