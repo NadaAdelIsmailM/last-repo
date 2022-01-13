@@ -26,7 +26,7 @@ void Battery::SaveCircuit(ofstream& CircuitFile)
 	string s = getlabel();
 	if (s == "")
 		setlabel("Battery");
-	CircuitFile << "BAT" << "\t" << ID << "\t" << getLabel() << "\t" << getSourceVoltage() << "\t" << m_pGfxInfo->PointsList[0].x
+	CircuitFile << "BAT" << "\t" << ID << "\t" << getLabel() << "\t" << getSourceVolt() << "\t" << m_pGfxInfo->PointsList[0].x
 		<< "\t" << m_pGfxInfo->PointsList[0].y << endl;
 	setlabel(s);
 	ID++;
@@ -36,7 +36,7 @@ void Battery::Operate()
 {
 
 }
-void Battery::Load(int Value, string Label) {
+void Battery::Load2(int Value, string Label) {
 	setSourceVoltage(Value);
 	setlabel(Label);
 }

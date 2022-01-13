@@ -4,8 +4,6 @@
 #include <fstream>
 class ActionLoad : public Action
 {
-private:
-	ifstream file;
 public:
 	ActionLoad(ApplicationManager* pApp);
 	virtual ~ActionLoad(void);

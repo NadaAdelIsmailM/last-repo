@@ -3,7 +3,7 @@
 //This header file contains some defenitions to be used all over the application
 
 //Terminals
-enum TerminalNum { TERM1, TERM2 };
+enum TerminalNum { Term1, Term2 };
 enum Status{ON,OFF};
 //All possible actions
 enum ActionType
@@ -61,7 +61,7 @@ enum ALLCOMPS
 	RESISTOR,
 	BULB,
 	BUZZER,
-	FUZE,
+	FUSE,
 	SWITCH,				
 	BATTERY,
 	GROUND,

@@ -35,7 +35,7 @@ void Resistor::Operate()
 {
 
 }
-void Resistor::Load(int Value, string Label) {
+void Resistor::Load2(int Value, string Label) {
 	resistance = Value;
 	setlabel(Label);
 }

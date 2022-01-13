@@ -10,7 +10,6 @@ ExitAction::~ExitAction(void)
 }
 void ExitAction::Execute()
 {
-	//pManager->DelAll();
 
 }
 void ExitAction::Undo()

@@ -31,7 +31,7 @@ void Module3::Operate()
 {
 
 }
-void Module3::Load(int Value, string Label)
+void Module3::Load2(int Value, string Label)
 {
 	resistance = Value;
 	setlabel(Label);

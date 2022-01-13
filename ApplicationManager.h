@@ -18,7 +18,7 @@ class ApplicationManager
 
 private:
 
-	bool IsSimulation; // true when in simulation mode
+	bool IsSim; // true when in simulation mode
 	bool IsSeries;
 	int CompCount;		//Actual number of Components
 	int ConnCount;		//Actual number of Connections
@@ -27,9 +27,15 @@ private:
 	Connection* ConnList[MaxConnCount];	//List of all Connections (Array of pointers)
 	window* pW;
 	UI* pUI; //pointer to the UI
+	bool state;
 
-
-public:	
+public:
+	bool getswitchstate() {
+		return state;
+	}
+	void setswitchstate(bool s) {
+		state = s;
+	}
 	Component* copycomp;
 	void setx(Component* x);
 	Component* getx();
@@ -47,8 +53,8 @@ public:
 	//Gets a pointer to UI Object
 	UI* GetUI();
 	
-	double calculateNetResistance();
-	double calculateNetVoltage();
+	double calculateALLResistance();
+	double calculateALLVoltage();
 	void calculateTermsVoltage();
 	void AddComponent(Component* pComp); //Adds a new component to the list of components
 	void AddConnection(Connection* pConn);//Adds a new connection to the list of connection
@@ -60,7 +66,7 @@ public:
 	Connection* GetConnByCoordinates(int x, int y);//returns pointer to the connection if (x,y) is in the component region
 	void SaveCircuit(ofstream& file);
 	int ApplicationManager::getCompOrder(Component* comp);//returns the index of the component in CompList
-	void Load(ifstream& file, string name);
+	void Load2(ifstream& my_file, string fo_name);
 				// Simulation Mode Functions //
 	bool ValidateCircuit();
 	void ToSimulation(); // Switches to simulation mode

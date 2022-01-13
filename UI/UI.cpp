@@ -351,13 +351,6 @@ void UI::DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 		else
 			ResImage = "Images\\Comp\\Resistor.jpg";	//use image of the normal resistor
 	}
-	/*else {
-		if (selected)
-			ResImage = "Images\\Comp\\Real_Resistor_HI.jpg";	//use image of highlighted resistor
-		else
-			ResImage = "Images\\Comp\\Real_Resistor.jpg";	//use image of the normal resistor
-	}*/
-	//Draw Resistor at Gfx_Info (1st corner)
 	
 		pWind->DrawImage(ResImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 	
@@ -377,23 +370,13 @@ void UI::DrawBattery(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
 
 	string BatImage;
-	if (img == SIM) {
 		if (selected)
 			BatImage = "Images\\Comp\\Battery_HI.jpg";
 		else
 			BatImage = "Images\\Comp\\Battery.jpg";
 	}
-}
-	/*else {
-		if (selected)
-			BatImage = "Images\\Comp\\Real_Battery_HI.jpg";	
-		else
-			BatImage = "Images\\Comp\\Real_Battery.jpg";	
-	}
 
-	pWind->DrawImage(BatImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
-
-}*/
+	
 void UI::DrawGround(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
 
@@ -461,24 +444,20 @@ void UI::DrawClosedSwitch(const GraphicsInfo& r_GfxInfo, bool selected) const
 void UI::DrawFuse(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
 
-	string FuzImage;
-	if (img == SIM) {
+	string FuseImage;
 		if (selected)
-			FuzImage = "Images\\Comp\\Fuze_HI.jpg";
+			FuseImage = "Images\\Comp\\fuse_HI.jpg";
 		else
-			FuzImage = "Images\\Comp\\Fuze.jpg";
-	}
-	else {
-		if (selected)
-			FuzImage = "Images\\Comp\\Real_Fuze_HI.jpg";
-		else
-			FuzImage = "Images\\Comp\\Real_Fuze.jpg";
-	}
+			FuseImage = "Images\\Comp\\fuse.jpg";
+	
 
-
-	pWind->DrawImage(FuzImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+	pWind->DrawImage(FuseImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 
 }
+
+
+
+
 void UI::DrawBulb(const GraphicsInfo& r_GfxInfo, bool selected) const {
 	Status Compstatus = ON;
 	string BulbImage;

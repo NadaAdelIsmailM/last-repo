@@ -28,7 +28,7 @@ void Bulb::Operate()
 {
 
 }
-void Bulb::Load(int Value, string Label) {
+void Bulb::Load2(int Value, string Label) {
 	resistance=Value;
 	setlabel(Label);
 }

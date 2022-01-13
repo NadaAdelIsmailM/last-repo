@@ -19,9 +19,9 @@ protected:
 	//double term1_volt, term2_volt;	//voltage at terminals 1&2
 	double resistance, sourceVoltage; // internal resistance and voltage jump introduced by source
 	//Each terminal is connected to set of connections
-	Connection *term1_conns[MAX_CONNS]; //list of pointers to connections
-	Connection *term2_conns[MAX_CONNS];
-
+	Connection *term1_conn[MAX_CONNS]; //list of pointers to connections
+	Connection *term2_conn[MAX_CONNS];
+	ApplicationManager* pmanager;
 	int term1_conn_count;	//actual no. of connections to each terminal
 	int term2_conn_count;
 	bool selected;
@@ -42,8 +42,8 @@ public:
 	void deleteGraphics();
 	void deletecon(Connection* pCon);
 	bool isSelected();
-	void Selection();
-	void unSelect();
+	void theSelection();
+	void unSelected();
 	/*void setMaxFuze(int max) {
 		MaxFuzeCurrent = max;
 	}
@@ -57,11 +57,11 @@ public:
 	GraphicsInfo* getGraphics();
 	int getResistance();
 	void setSourceVoltage(int V);
-	int getSourceVoltage();
+	int getSourceVolt();
 	void setState(int S);
 	int getCompState();
-	void setTerm1Volt(double v);		//sets the voltage at terminal1
-	void setTerm2Volt(double v);		//sets the voltage at terminal2
+	void setTerm1Voltage(double v);		//sets the voltage at terminal1
+	void setTerm2Voltage(double v);		//sets the voltage at terminal2
 	//double getTerm1Volt();				//returns the voltage at terminal1
 	//double getTerm2Volt();				//returns the voltage at terminal2
 	//double getResistance();
@@ -72,7 +72,7 @@ public:
 	virtual void Operate() = 0; // activates components such as bulb and buzzer
 	virtual ALLCOMPS whichComponent() = 0;
 	virtual void Draw(UI*) = 0;	//for each component to Draw itself
-	virtual void Load(int Value, string )=0;
+	virtual void Load2(int Value, string Label )=0;
 	virtual void SaveCircuit(ofstream& CircuitFile) = 0;
 	int getCompCenterX(UI*); // get horizontal/vertical centers of the component
 	int getCompCenterY(UI*);
@@ -84,7 +84,7 @@ public:
 //virtual void setInputStatus(STATUS s)=0;	//set status of SWITCH
 
 	//bool isInRegion(int x, int y, UI* pUI); // whether this point lies inside the component
-	TerminalNum whichTerminal(Connection* Conn); // returns the terminal to which a connection is connected
+	TerminalNum WhatTerminal(Connection* Conn); // returns the terminal to which a connection is connected
 
 	//Destructor must be virtual
 	virtual ~Component();

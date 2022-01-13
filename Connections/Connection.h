@@ -13,17 +13,17 @@ class Connection
 public:
 	
 	Connection(GraphicsInfo* r_GfxInfo, Component* cmp1 = nullptr, Component* cmp2 = nullptr);
-	void Load(Component* cmp1, Component* cmp2);
+	void Load2(Component* cmp1, Component* cmp2);
 	void save(ofstream& CircuitFile,int comp1, int comp2);
 	void setLabel(string s);
 	string getLabel();
-	double lineslope();
+	double SlopeofLine();
 	GraphicsInfo* getgraphics() const;
 	virtual void Draw(UI*);	//for connection to Draw itself
 	Component* getComp(int n);
 	void setNewComp(int n, Component*);
 	void deleteGraphics();
-	int WhichComp(Component*);
+	int WhatComp(Component*);
 	bool validate(Connection*);
 	bool isSelected();
 	void Selection();

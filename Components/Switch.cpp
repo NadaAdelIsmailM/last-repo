@@ -26,7 +26,7 @@ void Switch::Operate()
 {
 
 }
-void Switch::Load(int Value, string Label) {
+void Switch::Load2(int Value, string Label) {
 	CompStatus = Status(Value);
 	setlabel(Label);
 }

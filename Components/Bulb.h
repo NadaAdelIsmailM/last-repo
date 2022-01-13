@@ -8,7 +8,7 @@ public:
 	Bulb(GraphicsInfo* r_GfxInfo);
 	virtual void Draw(UI*);	//Draws the Bulb
 	virtual void Operate();
-	virtual void Load(int Value, string);
+	virtual void Load2(int Value, string Label);
 	virtual void SaveCircuit(ofstream& CircuitFile);
 	virtual ALLCOMPS Bulb::whichComponent();
 

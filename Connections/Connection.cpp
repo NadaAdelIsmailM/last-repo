@@ -7,7 +7,7 @@ Connection::Connection(GraphicsInfo* r_GfxInfo, Component* cmp1, Component* cmp2
 	Comp2 = cmp2;
 	selected = false;
 }
-void Connection::Load(Component* cmp1, Component* cmp2) {
+void Connection::Load2(Component* cmp1, Component* cmp2) {
 	
 	Comp1 = cmp1;
 	Comp2 = cmp2;
@@ -50,7 +50,7 @@ void Connection::save(ofstream& CircuitFile,int comp1, int comp2) {
 string Connection::getLabel() {
 	return c_label;
 	}
-double Connection::lineslope() {
+double Connection::SlopeofLine() {
 	double x1 = pGfxInfo->PointsList[0].x;
 	double x2 = pGfxInfo->PointsList[1].x;
 	double y1 = pGfxInfo->PointsList[0].y;
@@ -84,7 +84,7 @@ void Connection::setNewComp(int n, Component* comp) {
 void Connection::deleteGraphics() {
 	delete pGfxInfo;
 }
-int Connection::WhichComp(Component* comp) {
+int Connection::WhatComp(Component* comp) {
 	if (Comp1 == comp)
 		return 1;
 	else if (Comp2 == comp)

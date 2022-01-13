@@ -27,26 +27,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -110,12 +110,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="actioncut.cpp" />
     <ClCompile Include="ActionDelete.cpp" />
     <ClCompile Include="ActionDropDown.cpp" />
     <ClCompile Include="Actions\ActionAddBattery.cpp" />
     <ClCompile Include="Actions\ActionAddBulb.cpp" />
     <ClCompile Include="Actions\ActionAddBuzzer.cpp" />
     <ClCompile Include="Actions\ActionAddConnection.cpp" />
+    <ClCompile Include="Actions\ActionAddFuse.cpp" />
     <ClCompile Include="Actions\ActionAddGround.cpp" />
     <ClCompile Include="Actions\ActionAddLabel.cpp" />
     <ClCompile Include="Actions\AddModule3.cpp" />
@@ -123,7 +125,6 @@
     <ClCompile Include="Actions\ActionAddSwitch.cpp" />
     <ClCompile Include="Actions\ActionAmmeter.cpp" />
     <ClCompile Include="Actions\ActionDesign.cpp" />
-    <ClCompile Include="Actions\ActionEdit.cpp" />
     <ClCompile Include="Actions\ActionLoad.cpp" />
     <ClCompile Include="Actions\ActionSave.cpp" />
     <ClCompile Include="Actions\ActionSelect.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Components\Bulb.cpp" />
     <ClCompile Include="Components\Buzzer.cpp" />
     <ClCompile Include="Components\Component.cpp" />
+    <ClCompile Include="Components\Fuse.cpp" />
     <ClCompile Include="Components\Ground.cpp" />
     <ClCompile Include="Components\Module3.cpp" />
     <ClCompile Include="Components\Resistor.cpp" />
@@ -181,6 +183,7 @@
     <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="actioncut.h" />
     <ClInclude Include="ActionDelete.h" />
     <ClInclude Include="ActionDropDown.h" />
     <ClInclude Include="Actions\Action.h" />
@@ -188,6 +191,7 @@
     <ClInclude Include="Actions\ActionAddBulb.h" />
     <ClInclude Include="Actions\ActionAddBuzzer.h" />
     <ClInclude Include="Actions\ActionAddConnection.h" />
+    <ClInclude Include="Actions\ActionAddFuse.h" />
     <ClInclude Include="Actions\ActionAddGround.h" />
     <ClInclude Include="Actions\ActionAddLabel.h" />
     <ClInclude Include="Actions\AddModule3.h" />
@@ -195,7 +199,6 @@
     <ClInclude Include="Actions\ActionAddSwitch.h" />
     <ClInclude Include="Actions\ActionAmmeter.h" />
     <ClInclude Include="Actions\ActionDesign.h" />
-    <ClInclude Include="Actions\ActionEdit.h" />
     <ClInclude Include="Actions\ActionLoad.h" />
     <ClInclude Include="Actions\ActionSave.h" />
     <ClInclude Include="Actions\ActionSelect.h" />
@@ -226,6 +229,7 @@
     <ClInclude Include="Components\Bulb.h" />
     <ClInclude Include="Components\Buzzer.h" />
     <ClInclude Include="Components\Component.h" />
+    <ClInclude Include="Components\Fuse.h" />
     <ClInclude Include="Components\Ground.h" />
     <ClInclude Include="Components\Module3.h" />
     <ClInclude Include="Components\Resistor.h" />

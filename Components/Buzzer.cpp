@@ -27,9 +27,11 @@ void Buzzer::SaveCircuit(ofstream& CircuitFile)
 }
 void Buzzer::Operate()
 {
-
+	if (pmanager->getswitchstate()) {
+		Beep(523, 1000);
+	}
 }
-void Buzzer::Load(int Value, string Label) {
+void Buzzer::Load2(int Value, string Label) {
 	resistance = Value;
 	setlabel(Label);
 }
