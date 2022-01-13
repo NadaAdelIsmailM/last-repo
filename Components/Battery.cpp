@@ -40,6 +40,18 @@ void Battery::Load2(int Value, string Label) {
 	setSourceVoltage(Value);
 	setlabel(Label);
 }
-ALLCOMPS Battery::whichComponent() {
-	return 	BATTERY;
+
+void Battery::Load(string label, int value) {
+	setlabel(label);
+	//resistance = value;
+
+
+
+}
+
+Battery* Battery::copy()
+{
+	Battery* PPr = new Battery(m_pGfxInfo, m_Label);
+
+	return PPr;
 }
